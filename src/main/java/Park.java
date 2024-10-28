@@ -1,4 +1,4 @@
-package org.example.greenspace;
+package java;
 
 import lombok.Data;
 import lombok.Getter;
@@ -13,6 +13,8 @@ public class Park {
     private String location;
     @Setter
     private int rating;
+    //Other getters, setters and constructors
+    @Setter
     private boolean approved;
 
     public Park(String name, String location, int rating, boolean approved) {
