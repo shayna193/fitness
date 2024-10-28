@@ -20,13 +20,16 @@
 <main>
     <article id="left_section">
         <section class="image-section">
+            <h1 th:text="${park.name}"></h1>
+            <h3 th:text="${park.location}"></h3>
             <div class="image-container">
                 <img src="">
                 <img src="">
                 <img src="">
             </div>
-            <p>rating</p>
+            <p th:text="'Rating: ' + ${park.rating}"></p>
         </section>
+
 
         <section class="comment-section">
             <div class="comments">
