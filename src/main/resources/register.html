@@ -2,12 +2,7 @@
 <html>
     <head>
         <title class="title">Users</title>
-
-        <!--Implemented form validation JS Script here-->
-        <script src="../JS/validation.js"></script>
-
     </head>
-    <body>
     <header class="header">
         <nav class="nav">
             <input type="text" placeholder="Search for a park..." name="search">
@@ -20,42 +15,40 @@
     </header>
     <main>
         <section class="section">
-            <!--Existing user form-->
             <article id="login-div">
                 <h1 id="login-title">Existing Users</h1>
-                    <form id="login-form" name="login-form" onsubmit="return login()">
+                    <form id="login-form">
                         <label class="label"><b>Username:</b><br>
-                            <input class="input-form" type="text" name="username-login">
+                            <input class="input-form" type="text">
                         </label>
                         <br><br>
                         <label class="label"><b>Password</b><br>
-                            <input class="input-form" type="text" name="password-login">
+                            <input class="input-form" type="text">
                         </label>
                         <br><br>
-                        <button class="button-form" type="submit" name="button-login">Login</button>
+                        <button class="button-form" type="submit">Login</button>
                     </form>
             </article>
-            <!--New user form-->
             <article id="register-div">
                 <h1 id="register-title">New Users</h1>
-                    <form id="register-form" name="register-form" onsubmit="return register()">
+                    <form id="register-form">
                         <label class="label"><b>Username:</b><br>
-                            <input class="input-form" type="text" name="username-register">
+                            <input class="input-form" type="text">
                         </label>
                         <br><br>
                         <label class="label"><b>Email</b><br>
-                            <input class="input-form" type="email" name="email-register">
+                            <input class="input-form" type="email">
                         </label>
                         <br><br><br>
                         <label class="label"><b>Password</b><br>
-                            <input class="input-form" type="text" name="password-register">
+                            <input class="input-form" type="text">
                         </label>
                         <br><br>
                         <label class="label"><em>Re-enter Password</em><br>
-                            <input class="input-form" type="text" name="re-enter">
+                            <input class="input-form" type="text">
                         </label>
                         <br><br>
-                        <button class="button-form" type="submit" name="button-register">Register</button>
+                        <button class="button-form" type="submit">Register</button>
                     </form>
             </article>
         <section>
@@ -72,5 +65,4 @@
         <a href="">Terms of Service</a><br>
         <a href="">Privacy Policy</a>
     </footer>
-    </body>
 </html>
