@@ -1,4 +1,4 @@
-package java;
+package controllers;
 
 import lombok.Data;
 import lombok.Getter;
@@ -26,5 +26,6 @@ public class Park {
     public boolean isApproved() {
         return approved;
     }
+
 
 }
