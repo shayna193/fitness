@@ -15,12 +15,14 @@ public class Park {
     @Setter
     private double rating;
     private List<Integer> ratings = new ArrayList<>();
+    private String mapEmbed;
 
-    public Park(String name, String location) {
+    public Park(String name, String location, String mapEmbed) {
         this.name = name;
         this.location = location;
         ratings.add(5);
         setAverageRating();
+        this.mapEmbed = mapEmbed;
     }
 
     public void setAverageRating() {
