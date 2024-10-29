@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${park.name}"></title>
+    <link th:href="@{/styles/parkStyle.css}" rel="stylesheet" />
+</head>
+<body>
+
+<header>
+    <img src="" alt="Website Logo">
+    <div class="navbar">
+        <a href="">test</a>
+        <a href="">test</a>
+        <a href="">test</a>
+        <a href="">test</a>
+    </div>
+
+</header>
+
+<main>
+    <article id="park-details">
+        <section class="image-section">
+            <img th:src="@{/Images/Bute1.jpg}">
+            <img th:src="@{/Images/Bute2.jpg}">
+            <img th:src="@{/Images/Bute4-1024x713.jpg}">
+            <img th:src="@{/Images/buteparkair-1024x713.jpg}">
+
+            <div class="name-and-rating">
+                <h1 th:text="${park.name}"></h1>
+                <p th:text="'Rating: ' + ${park.rating} + '⭐'"></p>
+            </div>
+
+        </section>
+
+        <section class="park-info">
+            <div class="location">
+                <h3 th:text="'location: ' + ${park.location}"></h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.5605648715027!2d-3.187826924485843!3d51.48457991237162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486e1ca45662cb93%3A0x41e744e3c5cba3e6!2sBute%20Park!5e0!3m2!1sen!2suk!4v1730205010104!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="amenities">
+                <h3 th:text="'Amenities' "></h3>
+            </div>
+
+        </section>
+
+    </article>
+
+
+    <article id="comment-section">
+        <h2>Reviews</h2>
+        <section class="comment-form">
+            <form method="post" th:action="@{/submitReview}">
+                <input type="hidden" name="parkName" th:value="${park.name}">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+                <br>
+                <label for="rating">Rating:</label>
+                <select id="rating" name="rating">
+                    <option value="1">1⭐</option>
+                    <option value="2">2⭐</option>
+                    <option value="3">3⭐</option>
+                    <option value="4">4⭐</option>
+                    <option value="5">5⭐</option>
+                </select>
+                <br>
+                <label for="comment">Comment:</label>
+                <textarea name="comment" id="comment">Leave a Review!</textarea>
+                <button type="submit">Submit Review</button>
+            </form>
+        </section>
+    </article>
+
+</main>
+
+<footer>
+
+</footer>
+
+</body>
+</html>

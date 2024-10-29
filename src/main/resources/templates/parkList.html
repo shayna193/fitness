@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Park List</title>
+
+</head>
+<body>
+    <main>
+        <ul th:each="park: ${parks}">
+            <li>
+                <a th:href="@{/{parkName}(parkName=${park.name})}" th:text="${park.name}"></a>
+            </li>
+        </ul>
+    </main>
+</body>
+</html>
