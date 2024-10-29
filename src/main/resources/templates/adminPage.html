@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Parks</title>
 </head>
 <body>
-$END$
+
+<h1>Pending Parks for Approval</h1>
+<ul>
+    <!-- Loop through each pending park -->
+    <th:block th:each="park : ${pendingParks}">
+        <li>
+            <p><strong>Name:</strong> <span th:text="${park.name}"></span></p>
+            <p><strong>Location:</strong> <span th:text="${park.location}"></span></p>
+            <button th:onclick="'location.href=\'/Admin/approvePark/' + ${park.name} + '\' '">Approve</button>
+        </li>
+    </th:block>
+</ul>
+
+<h1>Approved Parks - Edit Details</h1>
+<ul>
+    <!-- Loop through each approved park -->
+    <th:block th:each="park : ${approvedParks}">
+        <li>
+            <form th:action="@{/Admin/editPark/{parkName}(parkName=${park.name})}" method="post">
+                <label>Name:
+                    <input type="text" name="newName" th:value="${park.name}"/>
+                </label>
+                <label>Location:
+                    <input type="text" name="newLocation" th:value="${park.location}"/>
+                </label>
+                <label>Rating:
+                    <input type="number" name="newRating" th:value="${park.rating}"/>
+                </label>
+                <button type="submit">Save Changes</button>
+            </form>
+        </li>
+    </th:block>
+</ul>
+
 </body>
 </html>

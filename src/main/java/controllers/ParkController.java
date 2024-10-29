@@ -1,5 +1,5 @@
 package controllers;
-import controllers.Park;
+
 import jakarta.validation.Valid;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,67 +13,71 @@ import java.util.List;
 @RequestMapping("/Admin")
 public class ParkController {
 
-    private List<Park> parks = new ArrayList<>(List.of(
-            new Park("testName", "testLocation", 2, false),
-            new Park("Nitesh Park", "Somewhere in the local area?", 1000000, false)
+    private List<Park> approvedParks = new ArrayList<>();
+    private List<Park> pendingParks = new ArrayList<>(List.of(
+            new Park("Linkin Park", "Ends", 2, false),
+            new Park("Nitesh Park", "Nether World", 5, false)
     ));
 
-    @GetMapping("/park")
-    public ModelAndView parkPage() {
-        ModelAndView modelAndView = new ModelAndView("/park");
-        Park selectedPark = parks.get(1);
-
-        modelAndView.addObject("park", selectedPark);
-        return modelAndView;
-    }
-
+    // New parks are added as pending
     @PostMapping("/submitPark")
     public ModelAndView submitForm(@Valid @ModelAttribute("park") Park park,
                                    BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            ModelAndView modelAndView = new ModelAndView("parkForm", model.asMap());
-            System.out.println("Error");
-            return modelAndView;
+            return new ModelAndView("addPark", model.asMap());
         }
-        park.setApproved(true); // approves park being added
-        parks.add(park); // adds new park to the list
-        System.out.println("New Park added: " + park.getName() + "- Approved: " + park.isApproved());
+        park.setApproved(false); // Park is pending approval
+        pendingParks.add(park);
+        System.out.println("New pending park added: " + park.getName());
         return new ModelAndView("redirect:/submitted");
     }
 
-    @RequestMapping(value = "/parks/{parkName}")
-    public int parkRating(@PathVariable String parkName) {
-        for (Park park : parks) {
-            if (park.getName().equals(parkName)) {
-                return park.getRating();
-            }
-        }
-        return 0;
-    }
-
-    @GetMapping("/parkList")
-    public ModelAndView parkList() {
-        ModelAndView modelAndView = new ModelAndView("parkList");
-        modelAndView.addObject("parks", parks);
-        return modelAndView;
-    }
-
+    // Approve a specific pending park
     @PostMapping("/approvePark/{parkName}")
     public ModelAndView approvePark(@PathVariable String parkName) {
-        for (Park park : parks) {
+        for (Park park : pendingParks) {
             if (park.getName().equals(parkName)) {
-                park.setApproved(true); // Set the park as approved
+                park.setApproved(true);
+                approvedParks.add(park);      // Move to approved list
+                pendingParks.remove(park);    // Remove from pending list
                 break;
             }
         }
-        return new ModelAndView("redirect:/parkList"); // Redirect back to the list after approval
+        return new ModelAndView("redirect:/Admin/parkList");
     }
 
+    // Endpoint to edit park details
+    @PostMapping("/editPark/{parkName}")
+    public ModelAndView editPark(@PathVariable String parkName,
+                                 @RequestParam String newName,
+                                 @RequestParam String newLocation,
+                                 @RequestParam int newRating) {
+        for (Park park : approvedParks) {
+            if (park.getName().equals(parkName)) {
+                park.setName(newName);
+                park.setLocation(newLocation);
+                park.setRating(newRating);
+                System.out.println("Updated Park: " + parkName);
+                break;
+            }
+        }
+        return new ModelAndView("redirect:/Admin/parkList"); // Redirect to updated list
+    }
+
+    // View both lists
+    @GetMapping("/parkList")
+    public ModelAndView parkList() {
+        ModelAndView modelAndView = new ModelAndView("parkList");
+        modelAndView.addObject("approvedParks", approvedParks);
+        modelAndView.addObject("pendingParks", pendingParks);
+        return modelAndView;
+    }
+
+    // Admin can reset all parks to pending if needed
     @GetMapping("/disapproveAllParks")
     public void disapproveAllParks() {
-        for (Park park : parks) {
-            park.setApproved(false); // disapprove each park
-        }
+        pendingParks.addAll(approvedParks);  // Move all to pending
+        approvedParks.clear();
+        pendingParks.forEach(park -> park.setApproved(false));
     }
-
 }

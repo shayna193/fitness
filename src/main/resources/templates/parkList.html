@@ -2,15 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park List</title>
 </head>
 <body>
-    <main>
-        <ul th:each="park: ${parks}">
-            <li>
-                <a th:text="${park.name}"></a>
-            </li>
-        </ul>
-    </main>
+<h1>Park List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Rating</th>
+        <th>Approved</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="park : ${parks}">
+        <td th:text="${park.name}"></td>
+        <td th:text="${park.location}"></td>
+        <td th:text="${park.rating}"></td>
+        <td th:text="${park.approved} ? 'Yes' : 'No'"></td>
+        <td>
+            <form th:action="@{/Admin/approvePark/{parkName}(parkName=${park.name})}" method="post">
+                <button type="submit">Approve</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
