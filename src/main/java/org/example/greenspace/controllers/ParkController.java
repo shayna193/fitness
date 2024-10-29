@@ -16,15 +16,6 @@ public class ParkController {
             new Park("Nitesh Park", "Somewhere in the local area?")
     );
 
-    @GetMapping("/park")
-    public ModelAndView parkPage() {
-        ModelAndView modelAndView = new ModelAndView("/park");
-        Park selectedPark = parks.get(1);
-
-        modelAndView.addObject("park", selectedPark);
-        return modelAndView;
-    }
-
     @GetMapping("/park/{parkName}")
     public ModelAndView parkPage(@PathVariable String parkName) {
         for (Park park : parks) {
@@ -72,7 +63,7 @@ public class ParkController {
             System.out.println("Error: Park not found");
             return new ModelAndView("redirect:/parkList"); // Redirects to home page if park
         }
-        ModelAndView modelAndView = new ModelAndView("redirect:/park");
+        ModelAndView modelAndView = new ModelAndView("redirect:/park/" + parkName);
         modelAndView.addObject("park", currentPark);
         return modelAndView;
     }

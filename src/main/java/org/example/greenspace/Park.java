@@ -19,7 +19,8 @@ public class Park {
     public Park(String name, String location) {
         this.name = name;
         this.location = location;
-        rating = 5;
+        ratings.add(5);
+        setAverageRating();
     }
 
     public void setAverageRating() {
@@ -31,9 +32,9 @@ public class Park {
             sum += rating;
         }
 
-        double avarage = sum / ratings.size();
+        double average = sum / ratings.size();
 
-        rating = Math.round(avarage * 4) / 4.0;
+        rating = Math.round(average * 4) / 4.0;
     }
 
     public void addRating(int rating) {
