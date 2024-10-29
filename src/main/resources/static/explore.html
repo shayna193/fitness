@@ -3,7 +3,7 @@
     <head>
         <title>Explore Page</title>
     </head>
-    <body>
+    <body onload="convert()">
 
     <!--Header-->
     <header>
@@ -22,7 +22,7 @@
         <img
         height="100"
         alt="Logo"
-        src="./pics/logo.png"
+        src="./images/logo.png"
         title="Logo"><br>
         <br>
 
@@ -30,70 +30,198 @@
         Explore All of Cardiff's Parks
     </h1>
     <img
-        height="100"
         alt="Background image"
-        src="./pics/explorebg.png"
+        src="./images/homebg.jpg"
         title="Background image"><br>
     </div>
 
-    <!--Main page content-->
+    <div id="parks-list"></div>
+    <button onclick="sortRatingH2L()">Sort highest to lowest rating</button>
+    <button onclick="sortRatingL2H()">Sort lowest to highest rating</button>
+    <button onclick="filterParking()">View parks with parking</button>
+    <button onclick="filterDogs()">View dog-friendly parks</button>
+    <button onclick="filterKids()">View kid-friendly parks</button>
 
-    <!--Add star icons for ratings-->
-<main>
-    <section id="allparks">
-        <table>
-            <thead>
-                <tr>
-                    <th>Park</th>
-                    <th>Location</th>
-                    <th>Rating</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="">Nitesh Park</a></td>
-                    <td>Roath</td>
-                    <td>4.8/5</td>   
-                </tr>
-                <tr>
-                    <td><a href="">Ian Park</a></td>
-                    <td>Cathays</td>
-                    <td>4.6/5</td>
-                </tr>
-                <tr>
-                    <td><a href="">Louise Park</a></td>
-                    <td>Thornhill</td>
-                    <td>4.5/5</td>
-                </tr>
-                <tr>
-                    <td><a href="">Wendy Park</a></td>
-                    <td>Pontcanna</td>
-                    <td>4.3/5</td>
-                </tr>
-                <tr>
-                    <td><a href="">Arunima Park</a></td>
-                    <td>Fairwater</td>
-                    <td>4.2/5</td>
-            </tbody>
-        </table>
-    </section>
-</main>
+        <script>
+            let jsonData = [
+                {
+                    "name": "Nitesh Park",
+                    "location": "Roath",
+                    "rating": 4.8,
+                    "amenities": ["Playground", "Cafe", "Picnic Area"],
+                    "parking": true,
+                    "dogs": false,
+                    "kids":true
+                },
+                {
+                    "name": "Ian Park",
+                    "location": "Cathays",
+                    "rating": 4.7,
+                    "amenities": ["Garden", "Cafe", "Lake"],
+                    "parking": true,
+                    "dogs": true,
+                    "kids":true
+                },
+                {
+                    "name": "Louise Park",
+                    "location": "Pontcanna",
+                    "rating": 4.4,
+                    "amenities": ["Gym", "Garden", "Picnic Area"],
+                    "parking": false,
+                    "dogs": true,
+                    "kids":false
+                }
+            ];
+            //Function to convert JSON data to HTML table
+            function convert() {
+                let container = document.getElementById("parks-list");
+                let table = document.createElement("table");
+                let cols = Object.keys(jsonData[0]);
+                let thead = document.createElement("thead");
+                let tr = document.createElement("tr");
+                cols.forEach((item) => {
+                    let th = document.createElement("th");
+                    th.innerText = item;
+                    tr.appendChild(th);
+                });
+                thead.appendChild(tr);
+                table.append(tr)
 
+                jsonData.forEach((item) => {
+                    let tr = document.createElement("tr");
+                    let vals = Object.values(item);
+
+                    vals.forEach((elem) => {
+                        let td = document.createElement("td");
+                        td.innerText = elem;
+                        tr.appendChild(td);
+                    });
+                    table.appendChild(tr);
+                });
+                container.appendChild(table)
+            }
+
+            // Function to sort the parks from highest to lowest rating
+            function sortRatingH2L() {
+                jsonData.sort((a, b) => b.rating - a.rating);
+                const container = document.getElementById("parks-list");
+                container.innerHTML = "";
+                convert();
+            }
+
+            // Function to sort the parks from lowest to highest rating
+            function sortRatingL2H() {
+                jsonData.sort((a, b) => a.rating - b.rating);
+                const container = document.getElementById("parks-list");
+                container.innerHTML = "";
+                convert();
+            }
+
+            // Function to filter parks where parking is available
+            function filterParking() {
+                let container = document.getElementById("parks-list");
+                let table = document.createElement("table");
+                let cols = Object.keys(jsonData[0]);
+                let thead = document.createElement("thead");
+                let tr = document.createElement("tr");
+                cols.forEach((item) => {
+                    let th = document.createElement("th");
+                    th.innerText = item;
+                    tr.appendChild(th);
+                });
+                thead.appendChild(tr);
+                table.append(thead);
+                jsonData.forEach((item) => {
+                    if (item.parking) {
+                        let tr = document.createElement("tr");
+                        let vals = Object.values(item);
+                        vals.forEach((elem) => {
+                            let td = document.createElement("td");
+                            td.innerText = Array.isArray(elem) ? elem.join(', ') : elem;
+                            tr.appendChild(td);
+                        });
+                        table.appendChild(tr);
+                    }
+                });
+                container.innerHTML = "";
+                container.appendChild(table);
+            }
+
+            // Function to filter dog-friendly parks
+            function filterDogs() {
+                let container = document.getElementById("parks-list");
+                let table = document.createElement("table");
+                let cols = Object.keys(jsonData[0]);
+                let thead = document.createElement("thead");
+                let tr = document.createElement("tr");
+                cols.forEach((item) => {
+                    let th = document.createElement("th");
+                    th.innerText = item;
+                    tr.appendChild(th);
+                });
+                thead.appendChild(tr);
+                table.append(thead);
+                jsonData.forEach((item) => {
+                    if (item.dogs) {
+                        let tr = document.createElement("tr");
+                        let vals = Object.values(item);
+                        vals.forEach((elem) => {
+                            let td = document.createElement("td");
+                            td.innerText = Array.isArray(elem) ? elem.join(', ') : elem;
+                            tr.appendChild(td);
+                        });
+                        table.appendChild(tr);
+                    }
+                });
+                container.innerHTML = "";
+                container.appendChild(table);
+            }
+
+            // Function to filter kid-friendly parks
+            function filterKids() {
+                let container = document.getElementById("parks-list");
+                let table = document.createElement("table");
+                let cols = Object.keys(jsonData[0]);
+                let thead = document.createElement("thead");
+                let tr = document.createElement("tr");
+                cols.forEach((item) => {
+                    let th = document.createElement("th");
+                    th.innerText = item;
+                    tr.appendChild(th);
+                });
+                thead.appendChild(tr);
+                table.append(thead);
+                jsonData.forEach((item) => {
+                    if (item.kids) {
+                        let tr = document.createElement("tr");
+                        let vals = Object.values(item);
+                        vals.forEach((elem) => {
+                            let td = document.createElement("td");
+                            td.innerText = Array.isArray(elem) ? elem.join(', ') : elem;
+                            tr.appendChild(td);
+                        });
+                        table.appendChild(tr);
+                    }
+                });
+                container.innerHTML = "";
+                container.appendChild(table);
+            }
+
+        </script>
 
 <!--Footer-->
 
-<footer class="footer">
-    <h3>About Green Spaces</h3>
-    <p>We're a group of outdoor enthusiasts, environmentalists, 
-        and city explorers passionate about green spaces! 
-        With backgrounds in ecology, design, and tech, we are committed 
-        to helping people find their next favorite park and meet like-minded park enthusiasts. 
-        Each review blends expert insights and real experiences to make every visit memorable.</p><br>
-        <em><a href="/src/main/resources/register.html">Sign up </a>today to join our community!</em>
-        <br>
-    <a href="">Terms of Service</a><br>
-    <a href="">Privacy Policy</a>
-</footer>
-    <script src=""></script>
+    <footer class="footer">
+        <h3>About Green Spaces</h3>
+        <p>We're a group of outdoor enthusiasts, environmentalists,
+            and city explorers passionate about green spaces!
+            With backgrounds in ecology, design, and tech, we are committed
+            to helping people find their next favorite park and meet like-minded park enthusiasts.
+            Each review blends expert insights and real experiences to make every visit memorable.</p><br>
+            <em><a href="/src/main/resources/static/register.html">Sign up </a>today to join our community!</em>
+            <br>
+        <a href="">Terms of Service</a><br>
+        <a href="">Privacy Policy</a>
+    </footer>
     </body>
 </html>
