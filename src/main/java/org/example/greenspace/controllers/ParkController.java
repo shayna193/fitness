@@ -13,7 +13,6 @@ import java.util.List;
 public class ParkController {
 
     private List<Park> parks = List.of(
-            new Park("testName", "testLocation"),
             new Park("Nitesh Park", "Somewhere in the local area?")
     );
 

@@ -19,6 +19,7 @@ public class Park {
     public Park(String name, String location) {
         this.name = name;
         this.location = location;
+        rating = 5;
     }
 
     public void setAverageRating() {
