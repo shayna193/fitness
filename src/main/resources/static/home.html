@@ -2,12 +2,20 @@
 <html>
     <head>
         <title>Green Spaces</title>
+        <link href="./home.css"
+        rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
 
     <!--Header-->
     <header>
         <nav class="nav">
+            <img id="logo"
+                height="100"
+                alt="Logo"
+                src="./images/logo.png"
+                title="Logo">
             <input type="text" placeholder="Search for a park..." name="search">
             <button type="submit">Search</button>
             <a href="register.html">Sign Up</a>&emsp;
@@ -15,58 +23,56 @@
             <a href="addpark.html">Add a Park</a>&emsp;
             <a href="contact.html">Contact Us</a>
         </nav>
+        <h1 class="h1">
+            Green Spaces in Cardiff
+        </h1>
     </header>
-
-    <!--Logo--> 
-    <div class="top-section">
-        <img
-        height="100"
-        alt="Logo"
-        src="./pics/logo.png"
-        title="Logo"><br>
-        <br>
-
-    <h1 class="h1">
-        Green Spaces in Cardiff
-    </h1>
-    <img
-        height="100"
-        alt="Background image"
-        src="./pics/homebg.png"
-        title="Background image"><br>
-    </div>
 
     <!--Main page content-->
 <main>
     <section id="spotlight">
-        <h1>In the Spotlight</h1>
-        <h2>Nitesh Park</h2><br>
+        <h1>In the Spotlight - November 2024</h1>
+        <h2>Nitesh Park</h2>
+        <h4>&#128205;Roath</h4><br>
+        <div class="spot">
         <img
-        height="100"
+        height="200"
         alt="Image of Nitesh Park"
-        src=""
+        src="./images/homebg.jpg"
         title="Nitesh Park">
         <p>The Nitesh park is a serene escape nestled in rolling hills and ancient oak groves. 
             Wander through vibrant flower gardens, enjoy a picnic by the sparkling lake, 
             or explore the wooded trails. The nature playground and weekend workshops 
             invite all ages to reconnect with nature and embrace outdoor adventure.
         </p>
+        </div>
         <h3>Top Reviews</h3>
         <p>
-            <strong>Arya Elpula</strong><br>
+            <strong>Arya Elpula</strong>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span><br>
             Went here with my boyfriend Tom last week, it was absolutely gorgeous!
         </p>
         <p>
-            <strong>Adam Naylor</strong><br>
+            <strong>Adam Naylor</strong>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span><br>
             Reminded me of my favourite park in Tavistock, brought back a lot of childhood memories for me. 
         </p>
     </section>
+    
     <h3>Similar to <a src="">Nitesh Park</a></h3>
+    <div id="related">
         <p>
             <strong>Ian Park</strong><br>
             <img
             height="100"
-            src=""
+            src="./images/homebg.jpg"
             alt="Image of Ian Park"
             title="Ian Park">
         </p>
@@ -74,13 +80,12 @@
             <strong>Louise Park</strong><br>
             <img
             height="100"
-            src=""
+            src="./images/homebg.jpg"
             alt="Image of Louise Park"
             title="Louise Park"> 
         </p>
-
+    </div>
 </main>
-
 
 <!--Footer-->
 
