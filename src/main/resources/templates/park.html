@@ -7,24 +7,35 @@
 </head>
 <body>
 
+<!--Header-->
 <header>
-    <img src="" alt="Website Logo">
-    <div class="navbar">
-        <a href="">test</a>
-        <a href="">test</a>
-        <a href="">test</a>
-        <a href="">test</a>
-    </div>
-
+    <nav class="nav">
+        <a th:href="@{'/home'}">
+            <img id="logo" height="100" alt="Logo" th:src="@{/Images/logo.png}" title="Logo">
+        </a>
+        <input type="text" placeholder="Search for a park..." name="search">
+        <button type="submit">Search</button>
+        <a href="/register.html">Sign Up</a>&emsp;
+        <a href="/explore.html">Explore All Parks</a>&emsp;
+        <a href="/addpark.html">Add a Park</a>&emsp;
+        <a href="/contact.html">Contact Us</a>
+    </nav>
 </header>
 
 <main>
     <article id="park-details">
         <section class="image-section">
-            <img th:src="@{/Images/Bute1.jpg}">
-            <img th:src="@{/Images/Bute2.jpg}">
-            <img th:src="@{/Images/Bute4-1024x713.jpg}">
-            <img th:src="@{/Images/buteparkair-1024x713.jpg}">
+            <div class="image-scroll">
+                <img th:src="@{/Images/Bute1.jpg}">
+                <img th:src="@{/Images/Bute2.jpg}">
+                <img th:src="@{/Images/Bute4-1024x713.jpg}">
+                <img th:src="@{/Images/buteparkair-1024x713.jpg}">
+
+                <img th:src="@{/Images/Bute1.jpg}">
+                <img th:src="@{/Images/Bute2.jpg}">
+                <img th:src="@{/Images/Bute4-1024x713.jpg}">
+                <img th:src="@{/Images/buteparkair-1024x713.jpg}">
+            </div>
 
             <div class="name-and-rating">
                 <h1 th:text="${park.name}"></h1>
@@ -33,48 +44,152 @@
 
         </section>
 
-        <section class="park-info">
-            <div class="location">
-                <h3 th:text="'location: ' + ${park.location}"></h3>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.5605648715027!2d-3.187826924485843!3d51.48457991237162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486e1ca45662cb93%3A0x41e744e3c5cba3e6!2sBute%20Park!5e0!3m2!1sen!2suk!4v1730205010104!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <div class="amenities">
-                <h3 th:text="'Amenities' "></h3>
-            </div>
+    </article>
 
-        </section>
+    <article id="main-content">
+        <div id="left-section">
+            <div class="comment-section">
+                <section class="comment-form">
+                    <form method="post" th:action="@{/submitReview}">
+                        <input type="hidden" name="parkName" th:value="${park.name}">
+                        <label for="username">Username:</label>
+                        <br>
+                        <input type="text" id="username" name="username">
+                        <br>
+                        <label for="rating">Rating:</label>
+                        <br>
+                        <select id="rating" name="rating">
+                            <option value="1">1⭐</option>
+                            <option value="2">2⭐</option>
+                            <option value="3">3⭐</option>
+                            <option value="4">4⭐</option>
+                            <option value="5">5⭐</option>
+                        </select>
+                        <br>
+                        <label for="comment">Comment:</label>
+                        <br>
+                        <textarea name="comment" id="comment"></textarea>
+                        <br>
+                        <button type="submit">Submit Review</button>
+                    </form>
+                </section>
+
+                <section class="comment-display">
+                    <h2>Reviews</h2>
+                    <div class="comment">
+                        <h4>User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is a comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>Another User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is another comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is a comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>Another User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is another comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is a comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>Another User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is another comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is a comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>Another User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is another comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is a comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>Another User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is another comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is a comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>Another User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is another comment</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+        <div id="right-section">
+            <section class="park-location">
+                <div class="map-div">
+                    <h3 th:text="'location: ' + ${park.location}"></h3>
+                    <iframe th:src="${park.mapEmbed}" width="350" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </section>
+
+            <section class="park-amenities">
+                <div class="amenities">
+                    <h3 th:text="'Amenities' "></h3>
+                    <ul>
+                        <li>test</li>
+                        <li>test</li>
+                        <li>test</li>
+                        <li>test</li>
+                        <li>test</li>
+                    </ul>
+                </div>
+            </section>
+
+
+        </div>
 
     </article>
 
-
-    <article id="comment-section">
-        <h2>Reviews</h2>
-        <section class="comment-form">
-            <form method="post" th:action="@{/submitReview}">
-                <input type="hidden" name="parkName" th:value="${park.name}">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username">
-                <br>
-                <label for="rating">Rating:</label>
-                <select id="rating" name="rating">
-                    <option value="1">1⭐</option>
-                    <option value="2">2⭐</option>
-                    <option value="3">3⭐</option>
-                    <option value="4">4⭐</option>
-                    <option value="5">5⭐</option>
-                </select>
-                <br>
-                <label for="comment">Comment:</label>
-                <textarea name="comment" id="comment">Leave a Review!</textarea>
-                <button type="submit">Submit Review</button>
-            </form>
+    <article>
+        <section class="share-to-socials">
+            <h3>Share this park with your friends!</h3>
+            <img height="30" th:src="@{/Images/IgLogo.png}" alt="IG logo" title="IG logo">
+            <img height="30" th:src="@{/Images/whatsapp.png}" alt="IG logo" title="IG logo">
+            <img height="30" th:src="@{/Images/facebook.png}" alt="IG logo" title="IG logo">
         </section>
     </article>
+
 
 </main>
 
 <footer>
-
+    <h3>About Green Spaces</h3>
+    <p>We're a group of outdoor enthusiasts, environmentalists,
+        and city explorers passionate about green spaces!
+        With backgrounds in ecology, design, and tech, we are committed
+        to helping people find their next favorite park and meet like-minded park enthusiasts.
+        Each review blends expert insights and real experiences to make every visit memorable.</p><br>
+    <em><a href="/src/main/resources/register.html">Sign up </a>today to join our community!</em>
+    <br>
+    <a href="">Terms of Service</a><br>
+    <a href="">Privacy Policy</a>
 </footer>
 
 </body>

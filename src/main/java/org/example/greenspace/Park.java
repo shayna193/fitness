@@ -15,10 +15,14 @@ public class Park {
     @Setter
     private double rating;
     private List<Integer> ratings = new ArrayList<>();
+    private String mapEmbed;
 
-    public Park(String name, String location) {
+    public Park(String name, String location, String mapEmbed) {
         this.name = name;
         this.location = location;
+        ratings.add(5);
+        setAverageRating();
+        this.mapEmbed = mapEmbed;
     }
 
     public void setAverageRating() {
@@ -30,9 +34,9 @@ public class Park {
             sum += rating;
         }
 
-        double avarage = sum / ratings.size();
+        double average = sum / ratings.size();
 
-        rating = Math.round(avarage * 4) / 4.0;
+        rating = Math.round(average * 4) / 4.0;
     }
 
     public void addRating(int rating) {
