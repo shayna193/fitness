@@ -19,10 +19,6 @@ header {
     justify-content: space-evenly;
 }
 
-main {
-    height: 95vh;
-}
-
 .name-and-rating {
     display: flex;
     align-items: center;
@@ -70,3 +66,6 @@ h1 {
     margin-left: 5vw;
 }
 
+footer {
+    text-align: center;
+}

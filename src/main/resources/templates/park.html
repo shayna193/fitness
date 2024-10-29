@@ -8,14 +8,15 @@
 <body>
 
 <header>
-    <img src="" alt="Website Logo">
-    <div class="navbar">
-        <a href="">test</a>
-        <a href="">test</a>
-        <a href="">test</a>
-        <a href="">test</a>
-    </div>
-
+    <nav class="nav">
+        <input type="text" placeholder="Search for a park..." name="search">
+        <button type="submit">Search</button>
+        <a href="/home.html">Home</a>&emsp;
+        <a href="/register.html">Sign Up</a>&emsp;
+        <a href="/explore.html">Explore All Parks</a>&emsp;
+        <a href="/addpark.html">Add a Park</a>&emsp;
+        <a href="/contact.html">Contact Us</a>
+    </nav>
 </header>
 
 <main>
@@ -74,7 +75,36 @@
 </main>
 
 <footer>
+    <section class="share-to-socials">
+        <h3>Share this park with your friends!</h3>
+        <img
+                height="30"
+                th:src="@{Images/IgLogo.png}"
+                alt="IG logo"
+                title="IG logo">&emsp;
+        <img
+                height="30"
 
+                th:src="@{Images/whatsapp.png}"
+                alt="IG logo"
+                title="IG logo">&emsp;
+        <img
+                height="30"
+
+                th:src="@{Images/facebook.png}"
+                alt="IG logo"
+                title="IG logo">
+    </section>
+    <h3>About Green Spaces</h3>
+    <p>We're a group of outdoor enthusiasts, environmentalists,
+        and city explorers passionate about green spaces!
+        With backgrounds in ecology, design, and tech, we are committed
+        to helping people find their next favorite park and meet like-minded park enthusiasts.
+        Each review blends expert insights and real experiences to make every visit memorable.</p><br>
+    <em><a href="/src/main/resources/register.html">Sign up </a>today to join our community!</em>
+    <br>
+    <a href="">Terms of Service</a><br>
+    <a href="">Privacy Policy</a>
 </footer>
 
 </body>

@@ -9,7 +9,7 @@
     <main>
         <ul th:each="park: ${parks}">
             <li>
-                <a th:href="@{/{parkName}(parkName=${park.name})}" th:text="${park.name}"></a>
+                <a th:href="@{/park/{parkName}(parkName=${park.name})}" th:text="${park.name}"></a>
             </li>
         </ul>
     </main>
