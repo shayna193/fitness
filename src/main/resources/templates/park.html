@@ -48,14 +48,25 @@
 
 
     <article id="comment-section">
+        <h2>Reviews</h2>
         <section class="comment-form">
-            <form>
+            <form method="post" th:action="@{/submitReview}">
+                <input type="hidden" name="parkName" th:value="${park.name}">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username">
+                <br>
                 <label for="rating">Rating:</label>
-                <input type="number" name="rating" id="rating">
+                <select id="rating" name="rating">
+                    <option value="1">1⭐</option>
+                    <option value="2">2⭐</option>
+                    <option value="3">3⭐</option>
+                    <option value="4">4⭐</option>
+                    <option value="5">5⭐</option>
+                </select>
+                <br>
                 <label for="comment">Comment:</label>
-                <textarea name="comment" id="comment">Leave a comment!</textarea>
+                <textarea name="comment" id="comment">Leave a Review!</textarea>
+                <button type="submit">Submit Review</button>
             </form>
         </section>
     </article>

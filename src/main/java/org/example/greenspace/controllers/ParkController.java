@@ -13,8 +13,8 @@ import java.util.List;
 public class ParkController {
 
     private List<Park> parks = List.of(
-            new Park("testName", "testLocation", 2),
-            new Park("Nitesh Park", "Somewhere in the local area?", 1000000)
+            new Park("testName", "testLocation"),
+            new Park("Nitesh Park", "Somewhere in the local area?")
     );
 
     @GetMapping("/park")
@@ -52,20 +52,30 @@ public class ParkController {
     }
 
 
-//    @RequestMapping(value="/parks/{parkName}")
-//    public int parkRating(@PathVariable String parkName) {
-//        for (Park park : parks) {
-//            if (park.getName().equals(parkName)) {
-//                return park.getRating();
-//            }
-//        }
-//        return 0;
-//    }
-
     @GetMapping("/parkList")
     public ModelAndView parkList() {
         ModelAndView modelAndView = new ModelAndView("parkList");
         modelAndView.addObject("parks", parks);
+        return modelAndView;
+    }
+
+    @PostMapping("/submitReview")
+    public ModelAndView submitReview(@RequestParam int rating, @RequestParam String parkName) {
+
+        Park currentPark = null;
+        for (Park park : parks) {
+            if (park.getName().equals(parkName)) {
+                park.addRating(rating);
+                currentPark = park;
+            }
+        }
+        if (currentPark == null) {
+            ModelAndView modelAndView = new ModelAndView("redirect:/parkList");
+            System.out.println("an error occured");
+            return modelAndView;
+        }
+        ModelAndView modelAndView = new ModelAndView("redirect:/park");
+        modelAndView.addObject("park", currentPark);
         return modelAndView;
     }
 
