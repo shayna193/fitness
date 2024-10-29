@@ -2,7 +2,6 @@ package org.example.greenspace.controllers;
 
 import jakarta.validation.Valid;
 import org.example.greenspace.Park;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
