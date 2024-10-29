@@ -2,6 +2,7 @@ package org.example.greenspace.controllers;
 
 import jakarta.validation.Valid;
 import org.example.greenspace.Park;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class ParkController {
         return modelAndView;
     }
 
-    @GetMapping("/{parkName}")
+    @GetMapping("/park/{parkName}")
     public ModelAndView parkPage(@PathVariable String parkName) {
         for (Park park : parks) {
             if (park.getName().equals(parkName)) {
@@ -70,9 +71,8 @@ public class ParkController {
             }
         }
         if (currentPark == null) {
-            ModelAndView modelAndView = new ModelAndView("redirect:/parkList");
-            System.out.println("an error occured");
-            return modelAndView;
+            System.out.println("Error: Park not found");
+            return new ModelAndView("redirect:/parkList"); // Redirects to home page if park
         }
         ModelAndView modelAndView = new ModelAndView("redirect:/park");
         modelAndView.addObject("park", currentPark);
