@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Park List</title>
+
 </head>
 <body>
     <main>
         <ul th:each="park: ${parks}">
             <li>
-                <a th:text="${park.name}"></a>
+                <a th:href="@{/{parkName}(parkName=${park.name})}" th:text="${park.name}"></a>
             </li>
         </ul>
     </main>

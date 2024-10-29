@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${park.name}"></title>
+    <link th:href="@{/styles/parkStyle.css}" rel="stylesheet" />
 </head>
 <body>
 
@@ -18,51 +19,47 @@
 </header>
 
 <main>
-    <article id="left_section">
+    <article id="park-details">
         <section class="image-section">
-            <h1 th:text="${park.name}"></h1>
-            <h3 th:text="${park.location}"></h3>
-            <div class="image-container">
-                <img src="">
-                <img src="">
-                <img src="">
+            <img th:src="@{/Images/Bute1.jpg}">
+            <img th:src="@{/Images/Bute2.jpg}">
+            <img th:src="@{/Images/Bute4-1024x713.jpg}">
+            <img th:src="@{/Images/buteparkair-1024x713.jpg}">
+
+            <div class="name-and-rating">
+                <h1 th:text="${park.name}"></h1>
+                <p th:text="'Rating: ' + ${park.rating} + '⭐'"></p>
             </div>
-            <p th:text="'Rating: ' + ${park.rating}"></p>
+
         </section>
 
-
-        <section class="comment-section">
-            <div class="comments">
-
+        <section class="park-info">
+            <div class="location">
+                <h3 th:text="'location: ' + ${park.location}"></h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.5605648715027!2d-3.187826924485843!3d51.48457991237162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486e1ca45662cb93%3A0x41e744e3c5cba3e6!2sBute%20Park!5e0!3m2!1sen!2suk!4v1730205010104!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <div class="comment-form">
-                <form>
-                    <input type="text" id="username" name="username">
-                    <label for="username">Username:</label>
-
-                    <input type="text" id="comment" name="comment">
-                    <label for="comment">Comment:</label>
-                </form>
+            <div class="amenities">
+                <h3 th:text="'Amenities' "></h3>
             </div>
+
         </section>
 
     </article>
 
-    <article id="right-section">
-        <section class="map">
 
-        </section>
-
-        <section class="amenities">
-            <ul>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-            </ul>
+    <article id="comment-section">
+        <section class="comment-form">
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+                <label for="rating">Rating:</label>
+                <input type="number" name="rating" id="rating">
+                <label for="comment">Comment:</label>
+                <textarea name="comment" id="comment">Leave a comment!</textarea>
+            </form>
         </section>
     </article>
+
 </main>
 
 <footer>

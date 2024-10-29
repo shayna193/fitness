@@ -26,6 +26,18 @@ public class ParkController {
         return modelAndView;
     }
 
+    @GetMapping("/{parkName}")
+    public ModelAndView parkPage(@PathVariable String parkName) {
+        for (Park park : parks) {
+            if (park.getName().equals(parkName)) {
+                ModelAndView modelAndView = new ModelAndView("park");
+                modelAndView.addObject("park", park);
+                return modelAndView;
+            }
+        }
+        return new ModelAndView("Park not found");
+    }
+
     @PostMapping("/submitPark")
     public ModelAndView submitForm(@Valid @ModelAttribute("park") Park park,
                                    BindingResult bindingResult, Model model) {
@@ -40,15 +52,15 @@ public class ParkController {
     }
 
 
-    @RequestMapping(value="/parks/{parkName}")
-    public int parkRating(@PathVariable String parkName) {
-        for (Park park : parks) {
-            if (park.getName().equals(parkName)) {
-                return park.getRating();
-            }
-        }
-        return 0;
-    }
+//    @RequestMapping(value="/parks/{parkName}")
+//    public int parkRating(@PathVariable String parkName) {
+//        for (Park park : parks) {
+//            if (park.getName().equals(parkName)) {
+//                return park.getRating();
+//            }
+//        }
+//        return 0;
+//    }
 
     @GetMapping("/parkList")
     public ModelAndView parkList() {
