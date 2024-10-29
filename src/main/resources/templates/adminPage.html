@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Manage Parks</title>
 </head>
+<link rel="stylesheet" href="adminPage.css">
 <body>
 
 <h1>Pending Parks for Approval</h1>
@@ -14,7 +15,9 @@
         <li>
             <p><strong>Name:</strong> <span th:text="${park.name}"></span></p>
             <p><strong>Location:</strong> <span th:text="${park.location}"></span></p>
-            <button th:onclick="'location.href=\'/Admin/approvePark/' + ${park.name} + '\' '">Approve</button>
+            <a th:href="@{/Admin/approvePark/{parkName}(parkName=${park.name})}" style="text-decoration: none;">
+                <button>Approve</button>
+            </a>
         </li>
     </th:block>
 </ul>
@@ -25,14 +28,14 @@
     <th:block th:each="park : ${approvedParks}">
         <li>
             <form th:action="@{/Admin/editPark/{parkName}(parkName=${park.name})}" method="post">
-                <label>Name:
-                    <input type="text" name="newName" th:value="${park.name}"/>
+                <label for="newName">Name:
+                    <input type="text" id="newName" name="newName" th:value="${park.name}" required />
                 </label>
-                <label>Location:
-                    <input type="text" name="newLocation" th:value="${park.location}"/>
+                <label for="newLocation">Location:
+                    <input type="text" id="newLocation" name="newLocation" th:value="${park.location}" required />
                 </label>
-                <label>Rating:
-                    <input type="number" name="newRating" th:value="${park.rating}"/>
+                <label for="newRating">Rating:
+                    <input type="number" id="newRating" name="newRating" th:value="${park.rating}" min="1" max="5" required />
                 </label>
                 <button type="submit">Save Changes</button>
             </form>
