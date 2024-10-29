@@ -2,11 +2,18 @@
 <html>
     <head>
         <title>Explore Page</title>
+        <link href="./explore.css"
+        rel="stylesheet">
     </head>
     <body onload="convert()">
 
     <!--Header-->
     <header>
+        <img class="logo"
+            height="100"
+            alt="Logo"
+            src="./images/logo.png"
+            title="Logo">
         <nav class="nav">
             <input type="text" placeholder="Search for a park..." name="search">
             <button type="submit">Search</button>
@@ -17,22 +24,10 @@
         </nav>
     </header>
 
-    <!--Logo--> 
     <div class="top-section">
-        <img
-        height="100"
-        alt="Logo"
-        src="./images/logo.png"
-        title="Logo"><br>
-        <br>
-
     <h1 class="h1">
         Explore All of Cardiff's Parks
     </h1>
-    <img
-        alt="Background image"
-        src="./images/homebg.jpg"
-        title="Background image"><br>
     </div>
 
     <div id="parks-list"></div>
@@ -45,38 +40,38 @@
         <script>
             let jsonData = [
                 {
-                    "name": "Nitesh Park",
-                    "location": "Roath",
-                    "rating": 4.8,
-                    "amenities": ["Playground", "Cafe", "Picnic Area"],
-                    "parking": true,
-                    "dogs": false,
-                    "kids":true
+                    "Name": "Nitesh Park",
+                    "Location": "Roath",
+                    "Rating": 4.8,
+                    "Amenities": ["Playground", " Cafe", " Picnic Area"],
+                    "Parking": true,
+                    "Dogs": false,
+                    "Kids":true
                 },
                 {
-                    "name": "Ian Park",
-                    "location": "Cathays",
-                    "rating": 4.7,
-                    "amenities": ["Garden", "Cafe", "Lake"],
-                    "parking": true,
-                    "dogs": true,
-                    "kids":true
+                    "Name": "Ian Park",
+                    "Location": "Cathays",
+                    "Rating": 4.7,
+                    "Amenities": ["Garden", " Cafe", " Lake"],
+                    "Parking": true,
+                    "Dogs": true,
+                    "Kids":true
                 },
                 {
-                    "name": "Louise Park",
-                    "location": "Pontcanna",
-                    "rating": 4.4,
-                    "amenities": ["Gym", "Garden", "Picnic Area"],
-                    "parking": false,
-                    "dogs": true,
-                    "kids":false
+                    "Name": "Louise Park",
+                    "Location": "Pontcanna",
+                    "Rating": 4.4,
+                    "Amenities": ["Gym", " Garden", " Picnic Area"],
+                    "Parking": false,
+                    "Dogs": true,
+                    "Kids":false
                 }
             ];
             //Function to convert JSON data to HTML table
             function convert() {
                 let container = document.getElementById("parks-list");
                 let table = document.createElement("table");
-                let cols = Object.keys(jsonData[0]);
+                let cols = Object.keys(jsonData[0]).filter(col => col !== "Parking" && col !== "Kids" && col !== "Dogs");
                 let thead = document.createElement("thead");
                 let tr = document.createElement("tr");
                 cols.forEach((item) => {
@@ -85,25 +80,23 @@
                     tr.appendChild(th);
                 });
                 thead.appendChild(tr);
-                table.append(tr)
-
+                table.append(thead);
                 jsonData.forEach((item) => {
                     let tr = document.createElement("tr");
-                    let vals = Object.values(item);
-
-                    vals.forEach((elem) => {
+                    cols.forEach(col => {
                         let td = document.createElement("td");
-                        td.innerText = elem;
+                        td.innerText = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
                         tr.appendChild(td);
                     });
                     table.appendChild(tr);
                 });
-                container.appendChild(table)
+                container.innerHTML = "";
+                container.appendChild(table);
             }
 
             // Function to sort the parks from highest to lowest rating
             function sortRatingH2L() {
-                jsonData.sort((a, b) => b.rating - a.rating);
+                jsonData.sort((a, b) => b.Rating - a.Rating);
                 const container = document.getElementById("parks-list");
                 container.innerHTML = "";
                 convert();
@@ -111,7 +104,7 @@
 
             // Function to sort the parks from lowest to highest rating
             function sortRatingL2H() {
-                jsonData.sort((a, b) => a.rating - b.rating);
+                jsonData.sort((a, b) => a.Rating - b.Rating);
                 const container = document.getElementById("parks-list");
                 container.innerHTML = "";
                 convert();
@@ -121,7 +114,7 @@
             function filterParking() {
                 let container = document.getElementById("parks-list");
                 let table = document.createElement("table");
-                let cols = Object.keys(jsonData[0]);
+                let cols = Object.keys(jsonData[0]).filter(col => col !== "Parking" && col !== "Kids" && col !== "Dogs");
                 let thead = document.createElement("thead");
                 let tr = document.createElement("tr");
                 cols.forEach((item) => {
@@ -132,17 +125,17 @@
                 thead.appendChild(tr);
                 table.append(thead);
                 jsonData.forEach((item) => {
-                    if (item.parking) {
+                    if (item.Parking) {
                         let tr = document.createElement("tr");
-                        let vals = Object.values(item);
-                        vals.forEach((elem) => {
+                        cols.forEach(col => {
                             let td = document.createElement("td");
-                            td.innerText = Array.isArray(elem) ? elem.join(', ') : elem;
+                            td.innerText = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
                             tr.appendChild(td);
                         });
                         table.appendChild(tr);
                     }
                 });
+
                 container.innerHTML = "";
                 container.appendChild(table);
             }
@@ -151,7 +144,7 @@
             function filterDogs() {
                 let container = document.getElementById("parks-list");
                 let table = document.createElement("table");
-                let cols = Object.keys(jsonData[0]);
+                let cols = Object.keys(jsonData[0]).filter(col => col !== "Parking" && col !== "Kids" && col !== "Dogs");
                 let thead = document.createElement("thead");
                 let tr = document.createElement("tr");
                 cols.forEach((item) => {
@@ -162,17 +155,17 @@
                 thead.appendChild(tr);
                 table.append(thead);
                 jsonData.forEach((item) => {
-                    if (item.dogs) {
+                    if (item.Dogs) {
                         let tr = document.createElement("tr");
-                        let vals = Object.values(item);
-                        vals.forEach((elem) => {
+                        cols.forEach(col => {
                             let td = document.createElement("td");
-                            td.innerText = Array.isArray(elem) ? elem.join(', ') : elem;
+                            td.innerText = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
                             tr.appendChild(td);
                         });
                         table.appendChild(tr);
                     }
                 });
+
                 container.innerHTML = "";
                 container.appendChild(table);
             }
@@ -181,7 +174,7 @@
             function filterKids() {
                 let container = document.getElementById("parks-list");
                 let table = document.createElement("table");
-                let cols = Object.keys(jsonData[0]);
+                let cols = Object.keys(jsonData[0]).filter(col => col !== "Parking" && col !== "Kids" && col !== "Dogs");
                 let thead = document.createElement("thead");
                 let tr = document.createElement("tr");
                 cols.forEach((item) => {
@@ -192,21 +185,20 @@
                 thead.appendChild(tr);
                 table.append(thead);
                 jsonData.forEach((item) => {
-                    if (item.kids) {
+                    if (item.Kids) {
                         let tr = document.createElement("tr");
-                        let vals = Object.values(item);
-                        vals.forEach((elem) => {
+                        cols.forEach(col => {
                             let td = document.createElement("td");
-                            td.innerText = Array.isArray(elem) ? elem.join(', ') : elem;
+                            td.innerText = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
                             tr.appendChild(td);
                         });
                         table.appendChild(tr);
                     }
                 });
+
                 container.innerHTML = "";
                 container.appendChild(table);
             }
-
         </script>
 
 <!--Footer-->
