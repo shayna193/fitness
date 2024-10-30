@@ -1,21 +1,24 @@
 package org.example.greenspace.controllers;
 
+import org.example.greenspace.services.ParkService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
+import org.example.greenspace.Park;
 
 @RestController
 public class AdminController {
+    private ParkService parkService;
+    private final List<Park> approvedParks = new ArrayList<>();
+    private final List<Park> pendingParks = new ArrayList<>();
 
-    // Static data for pending and approved parks
-    private List<Park> approvedParks = new ArrayList<>();
-    private List<Park> pendingParks = new ArrayList<>();
-
-    // Initialize with some test data
-    public AdminController() {
-        pendingParks.add(new Park("Linkin Park", "Ends", 2, false));
-        pendingParks.add(new Park("Nitesh Park", "Nether World", 5, false));
+    @Autowired
+    public AdminController(ParkService parkService) {
+        this.parkService = parkService;
+        List<Park> parks = parkService.getParks();
+        pendingParks.addAll(parks);
     }
 
     @PostMapping("/approvePark/{parkName}")
