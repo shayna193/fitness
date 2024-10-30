@@ -7,7 +7,6 @@
     </head>
     <body>
 
-
     <header>
         <nav class="nav">
             <img id="logo"
@@ -17,7 +16,8 @@
                 title="Logo">
             <a th:href="@{/register}">Sign Up</a>&emsp;
             <a th:href="@{/explore}">Explore All Parks</a>&emsp;
-            <a>Add a Park</a>&emsp;
+            <a th:href="@{/addPark}">Add a Park</a>&emsp;
+            <button onclick=location.href="/adminPage">Administrator</button>
         </nav>
         <h1 class="h1">
             Green Spaces in Cardiff
