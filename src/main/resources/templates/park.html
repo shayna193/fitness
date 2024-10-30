@@ -67,75 +67,39 @@
                             <option value="5">5⭐</option>
                         </select>
                         <br>
-                        <label for="comment">Comment:</label>
+                        <label for="new-comment">Comment:</label>
                         <br>
-                        <textarea name="comment" id="comment"></textarea>
+                        <textarea name="comment" id="new-comment"></textarea>
                         <br>
-                        <button type="submit">Submit Review</button>
+                        <button type="submit" id="submitbtn">Submit Review</button>
                     </form>
                 </section>
-
-                <section class="comment-display">
                     <h2>Reviews</h2>
+                <section class="comment-display">
                     <div class="comment">
-                        <h4>User</h4>
-                        <p>Rating: 5⭐</p>
-                        <p>this is a comment</p>
+                        <h4>Zeus Huxtable</h4>
+                        <p>Rating: 3⭐</p>
+                        <p>An alright place to twirl my moustache</p>
                     </div>
                     <div class="comment">
-                        <h4>Another User</h4>
+                        <h4>Shayna</h4>
                         <p>Rating: 5⭐</p>
-                        <p>this is another comment</p>
+                        <p>A welcome relief from the mean streets of Bangalore</p>
                     </div>
                     <div class="comment">
-                        <h4>User</h4>
-                        <p>Rating: 5⭐</p>
-                        <p>this is a comment</p>
+                        <h4>Karla</h4>
+                        <p>Rating: 1⭐</p>
+                        <p>Not much to steal here, only foliage</p>
                     </div>
                     <div class="comment">
-                        <h4>Another User</h4>
-                        <p>Rating: 5⭐</p>
-                        <p>this is another comment</p>
+                        <h4>IGN</h4>
+                        <p>Rating: 3⭐</p>
+                        <p>Too much water</p>
                     </div>
                     <div class="comment">
-                        <h4>User</h4>
+                        <h4>Steve Feng</h4>
                         <p>Rating: 5⭐</p>
-                        <p>this is a comment</p>
-                    </div>
-                    <div class="comment">
-                        <h4>Another User</h4>
-                        <p>Rating: 5⭐</p>
-                        <p>this is another comment</p>
-                    </div>
-                    <div class="comment">
-                        <h4>User</h4>
-                        <p>Rating: 5⭐</p>
-                        <p>this is a comment</p>
-                    </div>
-                    <div class="comment">
-                        <h4>Another User</h4>
-                        <p>Rating: 5⭐</p>
-                        <p>this is another comment</p>
-                    </div>
-                    <div class="comment">
-                        <h4>User</h4>
-                        <p>Rating: 5⭐</p>
-                        <p>this is a comment</p>
-                    </div>
-                    <div class="comment">
-                        <h4>Another User</h4>
-                        <p>Rating: 5⭐</p>
-                        <p>this is another comment</p>
-                    </div>
-                    <div class="comment">
-                        <h4>User</h4>
-                        <p>Rating: 5⭐</p>
-                        <p>this is a comment</p>
-                    </div>
-                    <div class="comment">
-                        <h4>Another User</h4>
-                        <p>Rating: 5⭐</p>
-                        <p>this is another comment</p>
+                        <p>Fantastic spot for some summer pics</p>
                     </div>
                 </section>
             </div>
@@ -186,11 +150,11 @@
         With backgrounds in ecology, design, and tech, we are committed
         to helping people find their next favorite park and meet like-minded park enthusiasts.
         Each review blends expert insights and real experiences to make every visit memorable.</p><br>
-    <em><a href="/src/main/resources/register.html">Sign up </a>today to join our community!</em>
+    <em><a th:href="@{/register}">Sign up </a>today to join our community!</em>
     <br>
     <a href="">Terms of Service</a><br>
     <a href="">Privacy Policy</a>
 </footer>
-
+    <script th:src="@{/JS/comment.js}"></script>
 </body>
 </html>
