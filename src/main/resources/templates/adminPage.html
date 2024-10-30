@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Parks</title>
+</head>
+<link rel="stylesheet" href="../static/styles/adminPage.css">
+<body>
+
+<h1>Pending Parks for Approval</h1>
+<ul>
+    <!-- Loop through each pending park -->
+    <th:block th:each="park : ${pendingParks}">
+        <li>
+            <p><strong>Name:</strong> <span th:text="${park.name}"></span></p>
+            <p><strong>Location:</strong> <span th:text="${park.location}"></span></p>
+            <a th:href="@{/Admin/approvePark/{parkName}(parkName=${park.name})}" style="text-decoration: none;">
+                <button>Approve</button>
+            </a>
+        </li>
+    </th:block>
+</ul>
+
+<h1>Approved Parks - Edit Details</h1>
+<ul>
+    <!-- Loop through each approved park -->
+    <th:block th:each="park : ${approvedParks}">
+        <li>
+            <form th:action="@{/Admin/editPark/{parkName}(parkName=${park.name})}" method="post">
+                <label for="newName">Name:
+                    <input type="text" id="newName" name="newName" th:value="${park.name}" required />
+                </label>
+                <label for="newLocation">Location:
+                    <input type="text" id="newLocation" name="newLocation" th:value="${park.location}" required />
+                </label>
+                <label for="newRating">Rating:
+                    <input type="number" id="newRating" name="newRating" th:value="${park.rating}" min="1" max="5" required />
+                </label>
+                <button type="submit">Save Changes</button>
+            </form>
+        </li>
+    </th:block>
+</ul>
+    <script src="JS/approvepark.js"></script>
+</body>
+</html>
