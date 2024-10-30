@@ -2,8 +2,6 @@
 <html>
     <head>
         <title>Green Spaces</title>
-        <link href="../static/styles/home.css"
-        rel="stylesheet">
         <link rel="stylesheet" th:href="@{/styles/home.css}">
     </head>
     <body>
@@ -18,8 +16,8 @@
                 title="Logo">
             <input type="text" placeholder="Search for a park..." name="search">
             <button type="submit">Search</button>
-            <a th:href="@{/register.html}">Sign Up</a>&emsp;
-            <a th:href="@{/explore.html}">Explore All Parks</a>&emsp;
+            <a th:href="@{/register}">Sign Up</a>&emsp;
+            <a th:href="@{'explore'}">Explore All Parks</a>&emsp;
             <a>Add a Park</a>&emsp;
         </nav>
         <h1 class="h1">

@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Explore Page</title>
-        <link href="./explore.css"
+        <link th:href="@{/styles/explore.css}"
         rel="stylesheet">
     </head>
     <body onload="convert()">
@@ -17,9 +17,9 @@
         <nav class="nav">
             <input type="text" placeholder="Search for a park..." name="search">
             <button type="submit">Search</button>
-            <a href="../templates/home.html">Home</a>&emsp;
-            <a href="register.html">Sign Up</a>&emsp;
-            <a href="addpark.html">Add a Park</a>&emsp;
+            <a th:href="@{/home}">Home</a>&emsp;
+            <a th:href="@{/register}">Sign Up</a>&emsp;
+            <a>Add a Park</a>
         </nav>
     </header>
 
