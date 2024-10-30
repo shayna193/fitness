@@ -1,3 +1,5 @@
+/*Header and footer using home.css styling*/
+
 * {
     margin: 0;
     padding: 0;
@@ -80,39 +82,65 @@ main {
     text-decoration: underline;
 }
 
+/*Split form divs into two and space independently*/
+
 .section {
     display: flex;
-    justify-content: space-between;
-    padding: 50px;
+    justify-content: space-around;
+    gap: 30px;
+    padding: 20px;
     margin: 20px;
+    flex-wrap: wrap;
 }
 
-.section button:hover {
-    background-color: #556b2f;
-}
-
-#login-div, #register-div {
+#register-div {
+    position: absolute;
+    right: 50px;
     flex: 1;
-    max-width: 45px;
-    margin-right: 500px;
-    margin-left: 200px;
+    max-width: 500px;
+    min-width: 250px;
+    margin: 0 10px;
 }
 
+#login-div {
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 0 110px;
+}
 
-#login-title, #register-title {
+/*Split form titles into two and space independently*/
+
+#register-title {
+
     font-family: cursive;
     color: #6b8e23;
-    background-color:#e0e0d1;
-    margin: 10px 0;
-    font-size: 2em;
+    background-color: #e0e0d1;
+    margin: 10px auto;
+    font-size: 1.5em;
     border: 5px solid #3a5f41;
     border-radius: 10px;
-    padding: 10px 100px;
-    display: block;
+    padding: 10px;
     text-align: center;
     width: fit-content;
-    white-space: nowrap;
 }
+
+#login-title{
+
+    font-family: cursive;
+    color: #6b8e23;
+    background-color: #e0e0d1;
+    margin: 10px 0px;
+    font-size: 1.5em;
+    border: 5px solid #3a5f41;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    width: fit-content;
+}
+
+/*Color and hover styling for inputs and buttons*/
 
 body input[type="text"],
 body input[type="email"] {
@@ -125,6 +153,10 @@ body input[type="email"]:hover {
     background-color: #e0e0d1;
 }
 
+/*This code uses divs to style the register elements independent of the button,
+    and divides the registration into two rows of fields
+ */
+
 #buttonless {
     display: flex;
     flex-direction: column;
@@ -136,6 +168,7 @@ body input[type="email"]:hover {
     align-items: center;
     gap: 30px;
 }
+/*Styling for the form buttons, input fields and field headings*/
 
 .button-form {
     padding: 10px 20px;
@@ -146,6 +179,10 @@ body input[type="email"]:hover {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+.button-form:hover {
+    background-color: #556b2f;
 }
 
 .input-form {
@@ -159,7 +196,7 @@ body input[type="email"]:hover {
 }
 
 #re-enter {
-    font-size: 1.5em;
+    font-size: 1.2em;
     white-space: nowrap;
 }
 

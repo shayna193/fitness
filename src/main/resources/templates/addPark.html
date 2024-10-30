@@ -6,6 +6,19 @@
     <title>Add a Park</title>
 </head>
 <link rel="stylesheet" type="text/css" th:href="@{/styles/addPark.css}">
+<header class="header">
+    <nav class="nav">
+        <img id="logo"
+             height="100"
+             alt="Logo"
+             src="./images/logo.png"
+             title="Logo">
+        <a th:href="@{/home}">Home</a>&emsp;
+        <a th:href="@{/explore}">Explore All Parks</a>&emsp;
+        <a th:href="@{/addPark}">Add a Park</a>&emsp;
+        <button onclick=location.href="/adminPage">Administrator</button>
+    </nav>
+</header>
 <body>
 
 <div class="form-container">
@@ -31,4 +44,16 @@
 </div>
 
 </body>
+    <footer class="footer">
+        <h3>About Green Spaces</h3>
+        <p>We're a group of outdoor enthusiasts, environmentalists,
+            and city explorers passionate about green spaces!
+            With backgrounds in ecology, design, and tech, we are committed
+            to helping people find their next favorite park and meet like-minded park enthusiasts.
+            Each review blends expert insights and real experiences to make every visit memorable.</p><br>
+        <em><a th:href="@{/register}">Sign up </a>today to join our community!</em>
+        <br>
+        <a href="">Terms of Service</a><br>
+        <a href="">Privacy Policy</a>
+    </footer>
 </html>

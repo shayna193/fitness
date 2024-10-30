@@ -6,6 +6,18 @@
     <title>Admin - Manage Parks</title>
 </head>
 <link rel="stylesheet" th:href="@{/styles/adminPage.css}">
+<header class="header">
+    <nav class="nav">
+        <img id="logo"
+             height="100"
+             alt="Logo"
+             src="./images/logo.png"
+             title="Logo">
+        <a th:href="@{/home}">Home</a>&emsp;
+        <a th:href="@{/explore}">Explore All Parks</a>&emsp;
+        <a th:href="@{/addPark}">Add a Park</a>&emsp;
+    </nav>
+</header>
 <body>
 
 <h1>Pending Parks for Approval</h1>
