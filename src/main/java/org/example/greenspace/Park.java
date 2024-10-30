@@ -23,6 +23,7 @@ public class Park {
     private boolean allowsDogs;
     private boolean allowsChildren;
     private boolean hasParking;
+    private boolean isApproved;
 
     public Park(String name, String location,String description, String openingTimes, String[] amenities,boolean allowsDogs, boolean allowsChildren, boolean hasParking, String mapEmbed) {
         this.name = name;
@@ -35,6 +36,7 @@ public class Park {
         this.allowsChildren = allowsChildren;
         this.hasParking = hasParking;
         this.description = description;
+        this.isApproved = true;
 
         setAmenities(List.of(amenities));
     }
@@ -70,6 +72,13 @@ public class Park {
         if (hasParking) {
             this.amenities.add("Has Parking");
         }
+    }
+
+    public boolean isApproved() {
+        return isApproved;
+    }
+    public void setApproved(boolean isApproved) {
+        this.isApproved = isApproved;
     }
 
 }

@@ -2,53 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD
-    <title>Title</title>
-</head>
-<body>
-
-<header>
-    <img src="" alt="Website Logo">
-    <div class="navbar">
-        <a href="">test</a>
-        <a href="">test</a>
-        <a href="">test</a>
-        <a href="">test</a>
-    </div>
-
-</header>
-
-<main>
-    <article id="left_section">
-        <section class="image-section">
-            <h1 th:text="${park.name}"></h1>
-            <h3 th:text="${park.location}"></h3>
-            <div class="image-container">
-                <img src="">
-                <img src="">
-                <img src="">
-            </div>
-            <p th:text="'Rating: ' + ${park.rating}"></p>
-        </section>
-
-
-        <section class="comment-section">
-            <div class="comments">
-
-            </div>
-            <div class="comment-form">
-                <form>
-                    <input type="text" id="username" name="username">
-                    <label for="username">Username:</label>
-
-                    <input type="text" id="comment" name="comment">
-                    <label for="comment">Comment:</label>
-                </form>
-            </div>
-=======
     <title th:text="${park.name}"></title>
     <link th:href="@{/styles/parkStyle.css}" rel="stylesheet" />
-</section>
+</head>
 <body>
 
 <!--Header-->
@@ -86,36 +42,11 @@
                 <p class="rating" th:text="'Rating: ' + ${park.rating} + '⭐'"></p>
             </div>
 
->>>>>>> 9e1acba05285ddd40e61ab877f553584153553ee
         </section>
     </article>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <article id="right-section">
-        <section class="map">
-
-        </section>
-
-        <section class="amenities">
-            <ul>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-            </ul>
-        </section>
-    </article>
-</main>
-
-<footer>
-
-=======
-=======
 
 
->>>>>>> ff84fee19dd56a25db11821861222a4ce41a84e5
     <article id="main-content">
         <div id="left-section">
             <div class="comment-section">
@@ -136,39 +67,75 @@
                             <option value="5">5⭐</option>
                         </select>
                         <br>
-                        <label for="new-comment">Comment:</label>
+                        <label for="comment">Comment:</label>
                         <br>
-                        <textarea name="comment" id="new-comment"></textarea>
+                        <textarea name="comment" id="comment"></textarea>
                         <br>
-                        <button type="submit" id="submitbtn">Submit Review</button>
+                        <button type="submit">Submit Review</button>
                     </form>
                 </section>
-                    <h2>Reviews</h2>
+
                 <section class="comment-display">
+                    <h2>Reviews</h2>
                     <div class="comment">
-                        <h4>Zeus Huxtable</h4>
-                        <p>Rating: 3⭐</p>
-                        <p>An alright place to twirl my moustache</p>
-                    </div>
-                    <div class="comment">
-                        <h4>Shayna</h4>
+                        <h4>User</h4>
                         <p>Rating: 5⭐</p>
-                        <p>A welcome relief from the mean streets of Bangalore</p>
+                        <p>this is a comment</p>
                     </div>
                     <div class="comment">
-                        <h4>Karla</h4>
-                        <p>Rating: 1⭐</p>
-                        <p>Not much to steal here, only foliage</p>
-                    </div>
-                    <div class="comment">
-                        <h4>IGN</h4>
-                        <p>Rating: 3⭐</p>
-                        <p>Too much water</p>
-                    </div>
-                    <div class="comment">
-                        <h4>Steve Feng</h4>
+                        <h4>Another User</h4>
                         <p>Rating: 5⭐</p>
-                        <p>Fantastic spot for some summer pics</p>
+                        <p>this is another comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is a comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>Another User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is another comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is a comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>Another User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is another comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is a comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>Another User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is another comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is a comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>Another User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is another comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is a comment</p>
+                    </div>
+                    <div class="comment">
+                        <h4>Another User</h4>
+                        <p>Rating: 5⭐</p>
+                        <p>this is another comment</p>
                     </div>
                 </section>
             </div>
@@ -190,7 +157,7 @@
             <div id="map-section">
                 <section class="park-location">
                     <div class="map-div">
-                        <h3 th:text="'Location: ' + ${park.location}"></h3>
+                        <h3 th:text="'location: ' + ${park.location}"></h3>
                         <iframe th:src="${park.mapEmbed}" width="350" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </section>
@@ -219,12 +186,11 @@
         With backgrounds in ecology, design, and tech, we are committed
         to helping people find their next favorite park and meet like-minded park enthusiasts.
         Each review blends expert insights and real experiences to make every visit memorable.</p><br>
-    <em><a th:href="@{/register}">Sign up </a>today to join our community!</em>
+    <em><a href="/src/main/resources/register.html">Sign up </a>today to join our community!</em>
     <br>
     <a href="">Terms of Service</a><br>
     <a href="">Privacy Policy</a>
->>>>>>> 9e1acba05285ddd40e61ab877f553584153553ee
 </footer>
-    <script th:src="@{/JS/comment.js}"></script>
+
 </body>
 </html>
