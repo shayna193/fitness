@@ -3,6 +3,7 @@
     <head>
         <title>Green Spaces</title>
         <link rel="stylesheet" th:href="@{/styles/home.css}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
 
@@ -14,8 +15,6 @@
                 alt="Logo"
                 src="./images/logo.png"
                 title="Logo">
-            <input type="text" placeholder="Search for a park..." name="search">
-            <button type="submit">Search</button>
             <a th:href="@{/register}">Sign Up</a>&emsp;
             <a th:href="@{/explore}">Explore All Parks</a>&emsp;
             <a>Add a Park</a>&emsp;
@@ -95,11 +94,10 @@
         With backgrounds in ecology, design, and tech, we are committed 
         to helping people find their next favorite park and meet like-minded park enthusiasts. 
         Each review blends expert insights and real experiences to make every visit memorable.</p><br>
-        <em><a href="/src/main/resources/register.html">Sign up </a>today to join our community!</em>
+        <em><a th:href="@{/register}">Sign up </a>today to join our community!</em>
         <br>
     <a href="">Terms of Service</a><br>
     <a href="">Privacy Policy</a>
 </footer>
-    <script src=""></script>
     </body>
 </html>
