@@ -6,7 +6,7 @@
     </head>
     <body>
 
-    <!--Header-->
+
     <header>
         <nav class="nav">
             <img id="logo"
@@ -29,19 +29,17 @@
 <main>
     <section id="spotlight">
         <h1>In the Spotlight - November 2024</h1>
-        <a th:href="@{'/park/Nitesh Park'}"><h2>Nitesh Park</h2></a>
-        <h4>&#128205;Roath</h4><br>
+        <a th:href="@{'/park/' + ${featuredPark.name}}">
+            <h2 th:text="${featuredPark.name}"></h2>
+        </a>
+        <h4 th:text="'📍' + ${featuredPark.location}"></h4><br>
         <div class="spot">
         <img
         height="200"
         alt="Image of Nitesh Park"
         src="./images/homebg.jpg"
         title="Nitesh Park">
-        <p>The Nitesh park is a serene escape nestled in rolling hills and ancient oak groves. 
-            Wander through vibrant flower gardens, enjoy a picnic by the sparkling lake, 
-            or explore the wooded trails. The nature playground and weekend workshops 
-            invite all ages to reconnect with nature and embrace outdoor adventure.
-        </p>
+        <p th:text="${featuredPark.description}"></p>
         </div>
         <h3>Top Reviews</h3>
         <p>
@@ -65,23 +63,23 @@
     
     <h3>Similar to <a src="">Nitesh Park</a></h3>
     <div id="related">
-        <a th:href="@{'/park/Ian Park'}">
+        <a th:href="@{'/park/' + ${similarPark1.name}}">
             <p>
-                <strong>Ian Park</strong><br>
+                <strong th:text="${similarPark1.name}"></strong><br>
                 <img
                         height="100"
                         src="./images/homebg.jpg"
-                        alt="Image of Ian Park"
-                        title="Ian Park">
+                        th:alt="${similarPark1.name} + ' image'"
+                        th:title="${similarPark1.name}">
             </p>
         </a>
-        <a th:href="@{'/park/Louise Park'}">
+        <a th:href="@{'/park/' + ${similarPark2.name}}">
             <p>
-                <strong>Louise Park</strong><br>
+                <strong th:text="${similarPark2.name}"></strong><br>
                 <img
                         height="100"
                         src="./images/homebg.jpg"
-                        alt="Image of Louise Park"
+                        th:alt="${similarPark2.name} + ' image'"
                         title="Louise Park">
             </p>
         </a>
