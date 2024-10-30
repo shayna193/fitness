@@ -4,7 +4,6 @@
         <title class="title">Users</title>
         <link th:href="@{/styles/register.css}" rel="stylesheet">
         <script th:src="@{/JS/validation.js}"></script>
-
     </head>
     <header class="header">
         <nav class="nav">
@@ -15,7 +14,8 @@
                 title="Logo">
             <a th:href="@{/home}">Home</a>&emsp;
             <a th:href="@{/explore}">Explore All Parks</a>&emsp;
-            <a>Add a Park</a>
+            <a th:href="@{/addPark}">Add a Park</a>&emsp;
+            <button onclick=location.href="/adminPage">Administrator</button>
         </nav>
     </header>
     <main>
