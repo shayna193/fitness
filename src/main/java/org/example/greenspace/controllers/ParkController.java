@@ -20,8 +20,7 @@ public class ParkController {
 
     @GetMapping("/home")
     public ModelAndView homePage(Model model) {
-        ModelAndView modelAndView = new ModelAndView("/home");
-        return modelAndView;
+        return new ModelAndView("/home");
     }
 
     @GetMapping("/park/{parkName}")
@@ -45,8 +44,7 @@ public class ParkController {
             return modelAndView;
         }
         System.out.println(park);
-        ModelAndView modelAndView = new ModelAndView("redirect:/submitted");
-        return modelAndView;
+        return new ModelAndView("redirect:/submitted");
     }
 
 
@@ -74,6 +72,16 @@ public class ParkController {
         ModelAndView modelAndView = new ModelAndView("redirect:/park/" + parkName);
         modelAndView.addObject("park", currentPark);
         return modelAndView;
+    }
+
+    @GetMapping("/explore")
+    public ModelAndView explore() {
+        return new ModelAndView("/explore");
+    }
+
+    @GetMapping("/register")
+    public ModelAndView register() {
+        return new ModelAndView("/register");
     }
 
 }

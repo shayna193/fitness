@@ -2,10 +2,8 @@
 <html>
     <head>
         <title class="title">Users</title>
-        <!--Implemented stylesheet here-->
-        <link href="../static/styles/register.css" rel="stylesheet">
-        <!--Implemented form validation JS Script here-->
-        <script src="../JS/validation.js"></script>
+        <link th:href="@{/styles/register.css}" rel="stylesheet">
+        <script th:src="@{/JS/validation.js}"></script>
 
     </head>
     <header class="header">
@@ -17,9 +15,9 @@
                 title="Logo">
             <input type="text" placeholder="Search for a park..." name="search">
             <button type="submit">Search</button>
-            <a href="../templates/home.html">Home</a>&emsp;
-            <a href="explore.html">Explore All Parks</a>&emsp;
-            <a href="addpark.html">Add a Park</a>&emsp;
+            <a th:href="@{/home}">Home</a>&emsp;
+            <a th:href="@{/explore}">Explore All Parks</a>&emsp;
+            <a>Add a Park</a>
         </nav>
     </header>
     <main>
