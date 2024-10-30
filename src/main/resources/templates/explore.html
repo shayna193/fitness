@@ -15,8 +15,8 @@
             src="./images/logo.png"
             title="Logo">
         <nav class="nav">
-            <input type="text" placeholder="Search for a park..." name="search">
-            <button type="submit">Search</button>
+            <input type="text" placeholder="Search for a park..." id="search" name="search">
+            <button type="submit" onclick="searchParks()">Search</button>
             <a th:href="@{/home}">Home</a>&emsp;
             <a th:href="@{/register}">Sign Up</a>&emsp;
             <a>Add a Park</a>
@@ -42,10 +42,10 @@
                     "Name": "Nitesh Park",
                     "Location": "Roath",
                     "Rating": 4.8,
-                    "Amenities": ["Playground", " Cafe", " Picnic Area"],
+                    "Amenities": ["Gym", " Cafe", " Picnic Area"],
                     "Parking": true,
-                    "Dogs": false,
-                    "Kids":true
+                    "Dogs": true,
+                    "Kids":false
                 },
                 {
                     "Name": "Ian Park",
@@ -54,16 +54,16 @@
                     "Amenities": ["Garden", " Cafe", " Lake"],
                     "Parking": true,
                     "Dogs": true,
-                    "Kids":true
+                    "Kids":false
                 },
                 {
                     "Name": "Louise Park",
                     "Location": "Pontcanna",
                     "Rating": 4.4,
-                    "Amenities": ["Gym", " Garden", " Picnic Area"],
+                    "Amenities": ["Playground", " Garden", " Picnic Area"],
                     "Parking": false,
                     "Dogs": true,
-                    "Kids":false
+                    "Kids":true
                 }
             ];
             //Function to convert JSON data to HTML table
@@ -198,6 +198,53 @@
                 container.innerHTML = "";
                 container.appendChild(table);
             }
+
+            function searchParks() {
+                let query = document.getElementById("search").value.toLowerCase();
+                let container = document.getElementById("parks-list");
+                let table = document.createElement("table");
+                let cols = Object.keys(jsonData[0]).filter(col => col !== "Parking" && col !== "Kids" && col !== "Dogs");
+
+                // Clear any existing "No park found" message
+                container.innerHTML = "";
+
+                // Create table header
+                let thead = document.createElement("thead");
+                let tr = document.createElement("tr");
+                cols.forEach((item) => {
+                    let th = document.createElement("th");
+                    th.innerText = item;
+                    tr.appendChild(th);
+                });
+                thead.appendChild(tr);
+                table.append(thead);
+
+                // Filter parks based on query
+                let filteredParks = jsonData.filter(park =>
+                    park.Name.toLowerCase().includes(query) ||
+                    park.Location.toLowerCase().includes(query)
+                );
+
+                // Populate table rows with filtered parks
+                if (filteredParks.length > 0) {
+                    filteredParks.forEach((item) => {
+                        let tr = document.createElement("tr");
+                        cols.forEach(col => {
+                            let td = document.createElement("td");
+                            td.innerText = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
+                            tr.appendChild(td);
+                        });
+                        table.appendChild(tr);
+                    });
+                    container.appendChild(table); // Append the table if parks are found
+                } else {
+                    // Display "No park found" message
+                    let noResultMessage = document.createElement("p");
+                    noResultMessage.innerText = "No park found.";
+                    container.appendChild(noResultMessage);
+                }
+            }
+
         </script>
 
 <!--Footer-->
