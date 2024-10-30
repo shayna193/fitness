@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Getter
 @Data
@@ -85,6 +86,12 @@ public class Park {
 
     public String getFirstImage() {
         return images.get(0);
+    }
+
+    public String getRandomImage() {
+        Random random = new Random();
+        int index = random.nextInt(images.size());
+        return images.get(index);
     }
 
 }

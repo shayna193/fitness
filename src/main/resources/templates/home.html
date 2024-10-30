@@ -36,7 +36,7 @@
         <img
         height="200"
         alt="Image of Nitesh Park"
-        th:src="${featuredPark.getFirstImage()}"
+        th:src="${featuredPark.getRandomImage()}"
         title="Nitesh Park">
         <p th:text="${featuredPark.description}"></p>
         </div>
@@ -67,7 +67,7 @@
                 <strong th:text="${similarPark1.name}"></strong><br>
                 <img
                         height="100"
-                        th:src="${similarPark1.getFirstImage()}"
+                        th:src="${similarPark1.getRandomImage()}"
                         th:alt="${similarPark1.name} + ' image'"
                         th:title="${similarPark1.name}">
             </p>
@@ -77,7 +77,7 @@
                 <strong th:text="${similarPark2.name}"></strong><br>
                 <img
                         height="100"
-                        th:src="${similarPark2.getFirstImage()}"
+                        th:src="${similarPark2.getRandomImage()}"
                         th:alt="${similarPark2.name} + ' image'"
                         title="Louise Park">
             </p>
