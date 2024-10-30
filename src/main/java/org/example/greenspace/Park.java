@@ -19,11 +19,12 @@ public class Park {
     private double rating;
     private List<Integer> ratings = new ArrayList<>();
     private String mapEmbed;
+    private String description;
     private boolean allowsDogs;
     private boolean allowsChildren;
     private boolean hasParking;
 
-    public Park(String name, String location,String openingTimes, String[] amenities,boolean allowsDogs, boolean allowsChildren, boolean hasParking, String mapEmbed) {
+    public Park(String name, String location,String description, String openingTimes, String[] amenities,boolean allowsDogs, boolean allowsChildren, boolean hasParking, String mapEmbed) {
         this.name = name;
         this.location = location;
         ratings.add(5);
@@ -33,6 +34,7 @@ public class Park {
         this.allowsDogs = allowsDogs;
         this.allowsChildren = allowsChildren;
         this.hasParking = hasParking;
+        this.description = description;
 
         setAmenities(List.of(amenities));
     }
