@@ -15,9 +15,9 @@
         </a>
         <input type="text" placeholder="Search for a park..." name="search">
         <button type="submit">Search</button>
-        <a href="/templates/register.html">Sign Up</a>&emsp;
-        <a href="/templates/explore.html">Explore All Parks</a>&emsp;
-        <a href="/addpark.html">Add a Park</a>&emsp;
+        <a th:href="@{/register}">Sign Up</a>&emsp;
+        <a th:href="@{/explore}">Explore All Parks</a>&emsp;
+        <a>Add a Park</a>
     </nav>
 </header>
 
@@ -37,13 +37,17 @@
             </div>
 
             <div class="name-and-rating">
-                <h1 th:text="${park.name}"></h1>
+                <div>
+                    <h1 th:text="${park.name}"></h1>
+                    <h4 th:text="${'Open: ' + park.openingTimes}"></h4>
+                </div>
                 <p class="rating" th:text="'Rating: ' + ${park.rating} + '⭐'"></p>
             </div>
 
         </section>
-
     </article>
+
+
 
     <article id="main-content">
         <div id="left-section">
@@ -140,27 +144,26 @@
         </div>
 
 
-        <div id="right-section">
-            <section class="park-location">
-                <div class="map-div">
-                    <h3 th:text="'location: ' + ${park.location}"></h3>
-                    <iframe th:src="${park.mapEmbed}" width="350" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </section>
+
+        <div class="right-section">
 
             <section class="park-amenities">
                 <div class="amenities">
                     <h3 th:text="'Amenities' "></h3>
                     <ul>
-                        <li>test</li>
-                        <li>test</li>
-                        <li>test</li>
-                        <li>test</li>
-                        <li>test</li>
+                        <li th:each="amenity : ${park.amenities}" th:text="${amenity}"></li>
                     </ul>
                 </div>
             </section>
 
+            <div id="map-section">
+                <section class="park-location">
+                    <div class="map-div">
+                        <h3 th:text="'location: ' + ${park.location}"></h3>
+                        <iframe th:src="${park.mapEmbed}" width="350" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </section>
+            </div>
 
         </div>
 
