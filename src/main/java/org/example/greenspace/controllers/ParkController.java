@@ -105,12 +105,6 @@ public class ParkController {
     }
 
 
-    @GetMapping("/parkList")
-    public ModelAndView parkList() {
-        ModelAndView modelAndView = new ModelAndView("parkList");
-        modelAndView.addObject("parks", parks);
-        return modelAndView;
-    }
 
     @PostMapping("/submitReview")
     public ModelAndView submitReview(@RequestParam int rating, @RequestParam String parkName) {
