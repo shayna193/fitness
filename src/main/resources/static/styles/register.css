@@ -1,3 +1,5 @@
+/*Header and footer using home.css styling*/
+
 * {
     margin: 0;
     padding: 0;
@@ -80,6 +82,8 @@ main {
     text-decoration: underline;
 }
 
+/*Split form divs into two and space independently*/
+
 .section {
     display: flex;
     justify-content: space-around;
@@ -103,8 +107,10 @@ main {
     flex: 1;
     align-items: flex-start;
     flex-direction: column;
-    margin: 0 10px;
+    margin: 0 110px;
 }
+
+/*Split form titles into two and space independently*/
 
 #register-title {
 
@@ -125,7 +131,7 @@ main {
     font-family: cursive;
     color: #6b8e23;
     background-color: #e0e0d1;
-    margin: 10px auto;
+    margin: 10px 0px;
     font-size: 1.5em;
     border: 5px solid #3a5f41;
     border-radius: 10px;
@@ -133,6 +139,8 @@ main {
     text-align: center;
     width: fit-content;
 }
+
+/*Color and hover styling for inputs and buttons*/
 
 body input[type="text"],
 body input[type="email"] {
@@ -145,9 +153,9 @@ body input[type="email"]:hover {
     background-color: #e0e0d1;
 }
 
-.section button:hover {
-    background-color: #556b2f;
-}
+/*This code uses divs to style the register elements independent of the button,
+    and divides the registration into two rows of fields
+ */
 
 #buttonless {
     display: flex;
@@ -160,6 +168,7 @@ body input[type="email"]:hover {
     align-items: center;
     gap: 30px;
 }
+/*Styling for the form buttons, input fields and field headings*/
 
 .button-form {
     padding: 10px 20px;
@@ -170,6 +179,10 @@ body input[type="email"]:hover {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+.button-form:hover {
+    background-color: #556b2f;
 }
 
 .input-form {
