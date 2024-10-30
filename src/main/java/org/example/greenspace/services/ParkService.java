@@ -1,5 +1,6 @@
 package org.example.greenspace.services;
 
+import org.example.greenspace.Comment;
 import org.example.greenspace.Park;
 import org.springframework.stereotype.Service;
 
@@ -9,8 +10,11 @@ import java.util.List;
 @Service
 public class ParkService {
     private List<Park> parks;
+    private List<Comment> comments;
 
     public ParkService() {
+        this.comments = new ArrayList<>();
+
         this.parks = new ArrayList<>(List.of(
                 new Park("Nitesh Park",
                         "Roath",
@@ -70,9 +74,17 @@ public class ParkService {
     public List<Park> getParks() {
         return parks;
     }
+    public List<Comment> getComments() {
+        return comments;
+    }
 
     public void addPark(Park park) {
         parks.add(park);
+    }
+
+    public void addComment(String username, String comment, int rating) {
+        Comment commentToAdd = new Comment(username, comment, rating);
+        comments.add(commentToAdd);
     }
 
     public Park findParkByName(String name) {
