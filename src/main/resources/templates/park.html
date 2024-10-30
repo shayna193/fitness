@@ -2,9 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
+    <title>Title</title>
+</head>
+<body>
+
+<header>
+    <img src="" alt="Website Logo">
+    <div class="navbar">
+        <a href="">test</a>
+        <a href="">test</a>
+        <a href="">test</a>
+        <a href="">test</a>
+    </div>
+
+</header>
+
+<main>
+    <article id="left_section">
+        <section class="image-section">
+            <h1 th:text="${park.name}"></h1>
+            <h3 th:text="${park.location}"></h3>
+            <div class="image-container">
+                <img src="">
+                <img src="">
+                <img src="">
+            </div>
+            <p th:text="'Rating: ' + ${park.rating}"></p>
+        </section>
+
+
+        <section class="comment-section">
+            <div class="comments">
+
+            </div>
+            <div class="comment-form">
+                <form>
+                    <input type="text" id="username" name="username">
+                    <label for="username">Username:</label>
+
+                    <input type="text" id="comment" name="comment">
+                    <label for="comment">Comment:</label>
+                </form>
+            </div>
+=======
     <title th:text="${park.name}"></title>
     <link th:href="@{/styles/parkStyle.css}" rel="stylesheet" />
-</head>
+</section>
 <body>
 
 <!--Header-->
@@ -42,11 +86,36 @@
                 <p class="rating" th:text="'Rating: ' + ${park.rating} + '⭐'"></p>
             </div>
 
+>>>>>>> 9e1acba05285ddd40e61ab877f553584153553ee
         </section>
     </article>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <article id="right-section">
+        <section class="map">
+
+        </section>
+
+        <section class="amenities">
+            <ul>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+            </ul>
+        </section>
+    </article>
+</main>
+
+<footer>
+
+=======
+=======
 
 
+>>>>>>> ff84fee19dd56a25db11821861222a4ce41a84e5
     <article id="main-content">
         <div id="left-section">
             <div class="comment-section">
@@ -154,6 +223,7 @@
     <br>
     <a href="">Terms of Service</a><br>
     <a href="">Privacy Policy</a>
+>>>>>>> 9e1acba05285ddd40e61ab877f553584153553ee
 </footer>
     <script th:src="@{/JS/comment.js}"></script>
 </body>
