@@ -18,6 +18,7 @@ public class Park {
     @Setter
     private double rating;
     private List<Integer> ratings = new ArrayList<>();
+    private List<String> images = new ArrayList<>();
     private String mapEmbed;
     private String description;
     private boolean allowsDogs;
@@ -25,7 +26,7 @@ public class Park {
     private boolean hasParking;
     private boolean isApproved;
 
-    public Park(String name, String location,String description, String openingTimes, String[] amenities,boolean allowsDogs, boolean allowsChildren, boolean hasParking, String mapEmbed) {
+    public Park(String name, String location,String description, String openingTimes, String[] amenities, String[] images, boolean allowsDogs, boolean allowsChildren, boolean hasParking, String mapEmbed) {
         this.name = name;
         this.location = location;
         ratings.add(5);
@@ -37,6 +38,7 @@ public class Park {
         this.hasParking = hasParking;
         this.description = description;
         this.isApproved = true;
+        this.images = List.of(images);
 
         setAmenities(List.of(amenities));
     }
@@ -79,6 +81,10 @@ public class Park {
     }
     public void setApproved(boolean isApproved) {
         this.isApproved = isApproved;
+    }
+
+    public String getFirstImage() {
+        return images.get(0);
     }
 
 }

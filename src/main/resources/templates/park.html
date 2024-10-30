@@ -23,15 +23,8 @@
     <article id="park-details">
         <section class="image-section">
             <div class="image-scroll">
-                <img th:src="@{/Images/Bute1.jpg}">
-                <img th:src="@{/Images/Bute2.jpg}">
-                <img th:src="@{/Images/Bute4-1024x713.jpg}">
-                <img th:src="@{/Images/buteparkair-1024x713.jpg}">
-
-                <img th:src="@{/Images/Bute1.jpg}">
-                <img th:src="@{/Images/Bute2.jpg}">
-                <img th:src="@{/Images/Bute4-1024x713.jpg}">
-                <img th:src="@{/Images/buteparkair-1024x713.jpg}">
+                <img th:each="image : ${park.images}" th:src="@{${image}}" alt="park image">
+                <img th:each="image : ${park.images}" th:src="@{${image}}" alt="park image">
             </div>
 
             <div class="name-and-rating">
