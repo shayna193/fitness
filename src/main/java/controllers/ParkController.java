@@ -1,20 +1,13 @@
-<<<<<<< HEAD:src/main/java/controllers/ParkController.java
 package controllers;
-
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-=======
-package org.example.greenspace.controllers;
-
 import jakarta.validation.Valid;
 import org.example.greenspace.Park;
->>>>>>> 9e1acba05285ddd40e61ab877f553584153553ee:src/main/java/org/example/greenspace/controllers/ParkController.java
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD:src/main/java/controllers/ParkController.java
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +22,6 @@ public class ParkController {
     ));
 
     // New parks are added as pending
-=======
 import java.util.List;
 
 @RestController
