@@ -39,7 +39,14 @@ public class AdminController {
         return modelAndView;
     }
     @GetMapping("/adminPage")
-    public ModelAndView adminPage(){
-        return new ModelAndView("adminPage");
+    public ModelAndView adminPage() {
+        return new ModelAndView("/adminPage");
     }
+
+    @GetMapping("/addPark")
+    public ModelAndView addPark() {
+        return new ModelAndView("/addPark");
+    }
+
+    // Admin-specific methods go here
 }

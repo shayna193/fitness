@@ -82,36 +82,56 @@ main {
 
 .section {
     display: flex;
-    justify-content: space-between;
-    padding: 50px;
+    justify-content: space-around;
+    gap: 30px;
+    padding: 20px;
     margin: 20px;
+    flex-wrap: wrap;
 }
 
-.section button:hover {
-    background-color: #556b2f;
-}
-
-#login-div, #register-div {
+#register-div {
+    position: absolute;
+    right: 50px;
     flex: 1;
-    max-width: 45px;
-    margin-right: 500px;
-    margin-left: 200px;
+    max-width: 500px;
+    min-width: 250px;
+    margin: 0 10px;
 }
 
+#login-div {
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 0 10px;
+}
 
-#login-title, #register-title {
+#register-title {
+
     font-family: cursive;
     color: #6b8e23;
-    background-color:#e0e0d1;
-    margin: 10px 0;
-    font-size: 2em;
+    background-color: #e0e0d1;
+    margin: 10px auto;
+    font-size: 1.5em;
     border: 5px solid #3a5f41;
     border-radius: 10px;
-    padding: 10px 100px;
-    display: block;
+    padding: 10px;
     text-align: center;
     width: fit-content;
-    white-space: nowrap;
+}
+
+#login-title{
+
+    font-family: cursive;
+    color: #6b8e23;
+    background-color: #e0e0d1;
+    margin: 10px auto;
+    font-size: 1.5em;
+    border: 5px solid #3a5f41;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    width: fit-content;
 }
 
 body input[type="text"],
@@ -123,6 +143,10 @@ body input[type="email"] {
 body input[type="text"]:hover,
 body input[type="email"]:hover {
     background-color: #e0e0d1;
+}
+
+.section button:hover {
+    background-color: #556b2f;
 }
 
 #buttonless {
@@ -159,7 +183,7 @@ body input[type="email"]:hover {
 }
 
 #re-enter {
-    font-size: 1.5em;
+    font-size: 1.2em;
     white-space: nowrap;
 }
 
