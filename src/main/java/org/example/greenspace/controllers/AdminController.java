@@ -1,12 +1,12 @@
 package org.example.greenspace.controllers;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Admin")
 public class AdminController {
 
     // Static data for pending and approved parks
@@ -38,8 +38,8 @@ public class AdminController {
         modelAndView.addObject("pendingParks", pendingParks);
         return modelAndView;
     }
-
-
-
-    // Admin-specific methods go here
+    @GetMapping("/adminPage")
+    public ModelAndView adminPage(){
+        return new ModelAndView("adminPage");
+    }
 }
