@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Admin")
 public class AdminController {
 
     // Static data for pending and approved parks
@@ -40,6 +39,15 @@ public class AdminController {
     }
 
 
+    @GetMapping("/adminPage")
+    public ModelAndView adminPage() {
+        return new ModelAndView("/adminPage");
+    }
+
+    @GetMapping("/addPark")
+    public ModelAndView addPark() {
+        return new ModelAndView("/addPark");
+    }
 
     // Admin-specific methods go here
 }
