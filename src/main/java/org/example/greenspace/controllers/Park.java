@@ -1,4 +1,4 @@
-package controllers;
+package org.example.greenspace.controllers;
 
 public class Park {
     private String name;
