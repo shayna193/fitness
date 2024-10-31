@@ -6,6 +6,22 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="adminPage.css">
 </head>
+<<<<<<< HEAD
+=======
+<link rel="stylesheet" th:href="@{/styles/adminPage.css}">
+<header class="header">
+    <nav class="nav">
+        <img id="logo"
+             height="100"
+             alt="Logo"
+             src="./images/logo.png"
+             title="Logo">
+        <a th:href="@{/home}">Home</a>&emsp;
+        <a th:href="@{/explore}">Explore All Parks</a>&emsp;
+        <a th:href="@{/addPark}">Add a Park</a>&emsp;
+    </nav>
+</header>
+>>>>>>> c30a25961e1787c888d9f4891cfd01e6d6d12ac6
 <body>
 <nav class="nav">
     <img id="logo"
@@ -21,6 +37,7 @@
     <h1>Admin Dashboard</h1>
 </header>
 
+<<<<<<< HEAD
 <div id="admin-content">
     <section id="approve-section">
         <h2>Pending Park Approvals</h2>
@@ -77,5 +94,40 @@
     <a href="">Terms of Service</a><br>
     <a href="">Privacy Policy</a>
 </footer>
+=======
+<h1>Approved Parks - Edit Details</h1>
+<ul>
+    <!-- Loop through each approved park -->
+    <th:block th:each="park : ${approvedParks}">
+        <li>
+            <form th:action="@{/Admin/editPark/{parkName}(parkName=${park.name})}" method="post">
+                <label for="newName">Name:
+                    <input type="text" id="newName" name="newName" th:value="${park.name}" required />
+                </label>
+                <label for="newLocation">Location:
+                    <input type="text" id="newLocation" name="newLocation" th:value="${park.location}" required />
+                </label>
+                <label for="newRating">Rating:
+                    <input type="number" id="newRating" name="newRating" th:value="${park.rating}" min="1" max="5" required />
+                </label>
+                <button type="submit">Save Changes</button>
+            </form>
+        </li>
+    </th:block>
+</ul>
+
+<h1>Submitted Comments</h1>
+<ul>
+    <th:block th:each="comment : ${comments}">
+        <li>
+            <p><strong>User:</strong> <span th:text="${comment.username}"></span></p>
+            <p><strong>Rating:</strong> <span th:text="${comment.rating}"></span>⭐</p>
+            <p><strong>Comment:</strong> <span th:text="${comment.comment}"></span></p>
+        </li>
+    </th:block>
+</ul>
+
+    <script src="JS/approvepark.js"></script>
+>>>>>>> c30a25961e1787c888d9f4891cfd01e6d6d12ac6
 </body>
 </html>

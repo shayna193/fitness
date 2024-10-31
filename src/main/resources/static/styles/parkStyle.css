@@ -110,8 +110,8 @@ h1 {
 
 .image-scroll {
     display: flex;
-    animation: scroll-right 100s linear infinite;
-    width: calc(200%);
+    animation: scroll-right 80s linear infinite;
+    width: fit-content;
 }
 
 .image-scroll img {
@@ -119,17 +119,14 @@ h1 {
 }
 
 .image-section img {
-    height: 350px;
+    max-height: 350px;
     flex-shrink: 0;
     width: auto;
 }
 
 @keyframes scroll-right {
-    from {
-        transform: translateX(0);
-    }
     to {
-        transform: translateX(-100%);
+        transform: translateX(-50%);
     }
 }
 

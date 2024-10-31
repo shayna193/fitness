@@ -1,4 +1,5 @@
-.header {
+/* General Styles */
+header {
     text-align: center;
     padding: 20px;
     background-color: #3a5f41;
@@ -6,9 +7,9 @@
     margin-bottom: 20px;
 }
 
-.header {
+header h1 {
     font-family: cursive;
-    font-size: 1.5em;
+    font-size: 2em;
     color: #f5f5dc;
 }
 
@@ -43,7 +44,6 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: fit-content;
 }
 
 .nav button:hover {
@@ -62,79 +62,72 @@
 
 body {
     font-family: Arial, sans-serif;
+    line-height: 1.6;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4;
-}
-
-.form-container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: #f9f9f9;
 }
 
 h1 {
+    color: #333;
+    border-bottom: 2px solid green;
+    padding-bottom: 10px;
+}
+
+/* List Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 15px;
+}
+
+/* Button Styles */
+button {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 10px 15px;
     text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: darkgreen;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
 }
 
 label {
-    display: block;
     margin: 10px 0 5px;
+    font-weight: bold;
 }
 
 input[type="text"],
 input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 30px;
-}
-
-button {
-    width: 100%;
     padding: 10px;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-
-.footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #3a5f41;
-    color: #f5f5dc;
-    margin-top: 20px;
-    border-top: 3px solid #6b8e23;
-}
-
-.footer h3 {
-    color: #f5f5dc;
-    font-size: 1.3em;
-    margin-bottom: 10px;
-}
-
-.footer p, .footer a {
-    color: #d8d8ba;
-    text-decoration: none;
-}
-
-.footer em {
-    color: #f5f5dc;
-    font-style: normal;
-    font-weight: bold;
-}
-
-.footer a:hover {
-    color: #c7c7a1;
-    text-decoration: underline;
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: green;
+    outline: none;
 }

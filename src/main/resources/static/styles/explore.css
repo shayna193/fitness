@@ -16,37 +16,66 @@ body {
 
 /* Header Styling */
 header {
-    background-color: #8fbc8f; /* Soft green */
-    padding: 15px;
-    border-bottom: 2px solid #6b8e23;
+    text-align: center;
+    padding: 20px;
+    background-color: #3a5f41;
+    color: #f5f5dc;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-family: cursive;
+    font-size: 2em;
+    color: #f5f5dc;
+}
+
+.nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
-header .nav input[type="text"] {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #6b8e23;
+#logo {
+    display: flex;
+    align-items: flex-start;
+    margin-right: 15px;
+    height: 40px;
 }
 
-header .nav button {
-    background-color: #6b8e23; /* Darker green */
-    color: white;
+.nav input[type="text"] {
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #f5f5dc;
+    border-radius: 4px;
+    background-color: #d8d8ba;
+    color: #3a5f41;
+}
+
+.nav button {
+    padding: 8px 15px;
+    font-size: 1em;
+    background-color: #6b8e23;
+    color: #f5f5dc;
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-header .nav a {
-    color: #2f4f4f; /* Dark green */
+.nav button:hover {
+    background-color: #556b2f;
+}
+
+.nav a {
+    color: #f5f5dc;
     text-decoration: none;
-    margin: 0 10px;
+    font-size: 1em;
 }
 
-header .nav a:hover {
-    color: #8fbc8f; /* Lighter green */
+.nav a:hover {
+    text-decoration: underline;
 }
 
 /* Top Section (Logo and Title) */
@@ -79,7 +108,7 @@ button {
 }
 
 button:hover {
-    background-color: #8fbc8f;
+    background-color: #556b2f;
 }
 
 /* Table Styling */
@@ -96,7 +125,7 @@ th, td {
 }
 
 th {
-    background-color: #8fbc8f;
+    background-color: #3a5f41;
     color: white;
 }
 
@@ -106,7 +135,7 @@ td {
 
 /* Footer Styling */
 footer {
-    background-color: #8fbc8f;
+    background-color: #3a5f41;
     color: white;
     padding: 20px;
     text-align: center;

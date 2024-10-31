@@ -7,7 +7,6 @@
     </head>
     <body>
 
-
     <header>
         <nav class="nav">
             <img id="logo"
@@ -17,7 +16,8 @@
                 title="Logo">
             <a th:href="@{/register}">Sign Up</a>&emsp;
             <a th:href="@{/explore}">Explore All Parks</a>&emsp;
-            <a>Add a Park</a>&emsp;
+            <a th:href="@{/addPark}">Add a Park</a>&emsp;
+            <button onclick=location.href="/adminPage">Administrator</button>
         </nav>
         <h1 class="h1">
             Green Spaces in Cardiff
@@ -36,7 +36,7 @@
         <img
         height="200"
         alt="Image of Nitesh Park"
-        src="./images/homebg.jpg"
+        th:src="${featuredPark.getRandomImage()}"
         title="Nitesh Park">
         <p th:text="${featuredPark.description}"></p>
         </div>
@@ -67,7 +67,7 @@
                 <strong th:text="${similarPark1.name}"></strong><br>
                 <img
                         height="100"
-                        src="./images/homebg.jpg"
+                        th:src="${similarPark1.getRandomImage()}"
                         th:alt="${similarPark1.name} + ' image'"
                         th:title="${similarPark1.name}">
             </p>
@@ -77,7 +77,7 @@
                 <strong th:text="${similarPark2.name}"></strong><br>
                 <img
                         height="100"
-                        src="./images/homebg.jpg"
+                        th:src="${similarPark2.getRandomImage()}"
                         th:alt="${similarPark2.name} + ' image'"
                         title="Louise Park">
             </p>

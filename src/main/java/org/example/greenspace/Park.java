@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Getter
 @Data
@@ -18,14 +19,14 @@ public class Park {
     @Setter
     private double rating;
     private List<Integer> ratings = new ArrayList<>();
+    private List<String> images = new ArrayList<>();
     private String mapEmbed;
     private String description;
     private boolean allowsDogs;
     private boolean allowsChildren;
     private boolean hasParking;
-    private boolean isApproved;
 
-    public Park(String name, String location,String description, String openingTimes, String[] amenities,boolean allowsDogs, boolean allowsChildren, boolean hasParking, String mapEmbed) {
+    public Park(String name, String location,String description, String openingTimes, String[] amenities, String[] images, boolean allowsDogs, boolean allowsChildren, boolean hasParking, String mapEmbed) {
         this.name = name;
         this.location = location;
         ratings.add(5);
@@ -36,6 +37,7 @@ public class Park {
         this.allowsChildren = allowsChildren;
         this.hasParking = hasParking;
         this.description = description;
+        this.images = List.of(images);
 
         setAmenities(List.of(amenities));
     }
@@ -72,16 +74,15 @@ public class Park {
             this.amenities.add("Has Parking");
         }
     }
-    public Park(String name, String location, int rating, boolean isApproved) {
-        this.name = name;
-        this.location = location;
-        this.rating = rating;
-        this.isApproved = isApproved;
+    public String getFirstImage() {
+        return images.get(0);
     }
-    public boolean isApproved() {
-        return isApproved;
+
+    public String getRandomImage() {
+        Random random = new Random();
+        int index = random.nextInt(images.size());
+        return images.get(index);
     }
-    public void setApproved(boolean isApproved) {
-        this.isApproved = isApproved;
-    }
+
+
 }
