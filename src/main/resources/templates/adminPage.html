@@ -49,9 +49,8 @@
             </tbody>
         </table>
     </section>
-
+    <h1>Approved Parks - Edit Details</h1>
     <section id="update-section">
-        <h2>Update Park Information</h2>
         <p>Modify details about approved parks to keep information accurate and up-to-date.</p>
         <form action="/admin/updatePark" method="post">
             <label for="park-name">Park Name:</label>
@@ -67,7 +66,6 @@
         </form>
     </section>
 </div>
-<h1>Approved Parks - Edit Details</h1>
 <ul>
     <!-- Loop through each approved park -->
     <th:block th:each="park : ${approvedParks}">

@@ -36,7 +36,7 @@ public class ParkController {
     }
 
     @GetMapping("/park/{parkName}")
-    public ModelAndView parkPage(String parkName) {
+    public ModelAndView parkPage(@PathVariable String parkName) {
         List<Park> parks = parkService.getParks();
         for (Park park : parks) {
             if (park.getName().equals(parkName)) {
