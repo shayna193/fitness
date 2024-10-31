@@ -1,269 +1,131 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Explore Page</title>
-        <link th:href="@{/styles/explore.css}"
-        rel="stylesheet">
-    </head>
-    <body onload="convert()">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Explore Page</title>
+    <link th:href="@{/styles/explore.css}" rel="stylesheet">
+</head>
+<body>
 
-    <!--Header-->
-    <header>
-        <nav class="nav">
-            <img class="logo"
-                 height="100"
-                 alt="Logo"
-                 src="./images/logo.png"
-                 title="Logo">
-            <input type="text" placeholder="Search for a park..." id="search" name="search">
-            <button type="submit" onclick="searchParks()">Search</button>
-            <a th:href="@{/home}">Home</a>&emsp;
-            <a th:href="@{/register}">Sign Up</a>&emsp;
-            <a th:href="@{/addPark}">Add a Park</a>&emsp;
-            <button onclick=location.href="/adminPage">Administrator</button>
-        </nav>
-    </header>
+<!--Header-->
+<header>
+    <nav class="nav">
+        <img class="logo" height="100" alt="Logo" src="./images/logo.png" title="Logo">
+        <input type="text" placeholder="Search for a park..." id="search" name="search" onkeyup="searchParks()">
+        <a th:href="@{/home}">Home</a>&emsp;
+        <a th:href="@{/register}">Sign Up</a>&emsp;
+        <a th:href="@{/addPark}">Add a Park</a>&emsp;
+        <button onclick="location.href='/adminPage'">Administrator</button>
+    </nav>
+</header>
 
-    <div class="top-section">
+<div class="top-section">
     <h1 class="h1">
         Explore All of Cardiff's Parks
     </h1>
-    </div>
+</div>
 
-    <div id="parks-list"></div>
-    <button onclick="sortRatingH2L()">Sort highest to lowest rating</button>
-    <button onclick="sortRatingL2H()">Sort lowest to highest rating</button>
-    <button onclick="filterParking()">View parks with parking</button>
-    <button onclick="filterDogs()">View dog-friendly parks</button>
-    <button onclick="filterKids()">View kid-friendly parks</button>
+<div id="parks-list">
+    <table id="parksTable">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Rating</th>
+            <th>Amenities</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="park : ${parks}">
+            <td>
+                <a th:href="@{/park/{parkName}(parkName=${park.name})}"
+                   th:text="${park.name}">Park Name</a>
+            </td>
+            <td th:text="${park.location}">Location</td>
+            <td th:text="${park.rating}">Rating</td>
+            <td th:text="${park.amenitiesAsString}">Amenities</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
-        <script>
-            let jsonData = [
-                {
-                    "Name": "Nitesh Park",
-                    "Location": "Roath",
-                    "Rating": 4.8,
-                    "Amenities": ["Gym", " Cafe", " Picnic Area"],
-                    "Parking": true,
-                    "Dogs": true,
-                    "Kids": false,
-                    "View": "<a href=''>View park</a>"
-                },
-                {
-                    "Name": "Ian Park",
-                    "Location": "Cathays",
-                    "Rating": 4.7,
-                    "Amenities": ["Garden", " Cafe", " Lake"],
-                    "Parking": true,
-                    "Dogs": true,
-                    "Kids":false,
-                    "View": "<a href=''>View park</a>"
-                },
-                {
-                    "Name": "Louise Park",
-                    "Location": "Pontcanna",
-                    "Rating": 4.4,
-                    "Amenities": ["Playground", " Garden", " Picnic Area"],
-                    "Parking": false,
-                    "Dogs": true,
-                    "Kids":true,
-                    "View": "<a href=''>View park</a>"
-                }
-            ];
-            //Function to convert JSON data to HTML table
-            function convert() {
-                let container = document.getElementById("parks-list");
-                let table = document.createElement("table");
-                let cols = Object.keys(jsonData[0]).filter(col => col !== "Parking" && col !== "Kids" && col !== "Dogs");
-                let thead = document.createElement("thead");
-                let tr = document.createElement("tr");
-                cols.forEach((item) => {
-                    let th = document.createElement("th");
-                    th.innerHTML = item;
-                    tr.appendChild(th);
-                });
-                thead.appendChild(tr);
-                table.append(thead);
-                jsonData.forEach((item) => {
-                    let tr = document.createElement("tr");
-                    cols.forEach(col => {
-                        let td = document.createElement("td");
-                        td.innerHTML = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
-                        tr.appendChild(td);
-                    });
-                    table.appendChild(tr);
-                });
-                container.innerHTML = "";
-                container.appendChild(table);
-            }
+<button onclick="sortRatingH2L()">Sort highest to lowest rating</button>
+<button onclick="sortRatingL2H()">Sort lowest to highest rating</button>
+<button onclick="filterParking()">View parks with parking</button>
+<button onclick="filterDogs()">View dog-friendly parks</button>
+<button onclick="filterKids()">View kid-friendly parks</button>
+<button onclick="showAllParks()">Show All Parks</button>
 
-            // Function to sort the parks from highest to lowest rating
-            function sortRatingH2L() {
-                jsonData.sort((a, b) => b.Rating - a.Rating);
-                const container = document.getElementById("parks-list");
-                container.innerHTML = "";
-                convert();
-            }
+<script>
+    function searchParks() {
+        let query = document.getElementById("search").value.toLowerCase();
+        let rows = document.querySelectorAll("#parksTable tbody tr");
 
-            // Function to sort the parks from lowest to highest rating
-            function sortRatingL2H() {
-                jsonData.sort((a, b) => a.Rating - b.Rating);
-                const container = document.getElementById("parks-list");
-                container.innerHTML = "";
-                convert();
-            }
+        rows.forEach(row => {
+            const name = row.cells[0].textContent.toLowerCase();
+            const location = row.cells[1].textContent.toLowerCase();
+            row.style.display = (name.includes(query) || location.includes(query)) ? "" : "none";
+        });
+    }
 
-            // Function to filter parks where parking is available
-            function filterParking() {
-                let container = document.getElementById("parks-list");
-                let table = document.createElement("table");
-                let cols = Object.keys(jsonData[0]).filter(col => col !== "Parking" && col !== "Kids" && col !== "Dogs");
-                let thead = document.createElement("thead");
-                let tr = document.createElement("tr");
-                cols.forEach((item) => {
-                    let th = document.createElement("th");
-                    th.innerHTML = item;
-                    tr.appendChild(th);
-                });
-                thead.appendChild(tr);
-                table.append(thead);
-                jsonData.forEach((item) => {
-                    if (item.Parking) {
-                        let tr = document.createElement("tr");
-                        cols.forEach(col => {
-                            let td = document.createElement("td");
-                            td.innerHTML = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
-                            tr.appendChild(td);
-                        });
-                        table.appendChild(tr);
-                    }
-                });
+    function sortRatingH2L() {
+        sortTableByRating(true);
+    }
 
-                container.innerHTML = "";
-                container.appendChild(table);
-            }
+    function sortRatingL2H() {
+        sortTableByRating(false);
+    }
 
-            // Function to filter dog-friendly parks
-            function filterDogs() {
-                let container = document.getElementById("parks-list");
-                let table = document.createElement("table");
-                let cols = Object.keys(jsonData[0]).filter(col => col !== "Parking" && col !== "Kids" && col !== "Dogs");
-                let thead = document.createElement("thead");
-                let tr = document.createElement("tr");
-                cols.forEach((item) => {
-                    let th = document.createElement("th");
-                    th.innerHTML = item;
-                    tr.appendChild(th);
-                });
-                thead.appendChild(tr);
-                table.append(thead);
-                jsonData.forEach((item) => {
-                    if (item.Dogs) {
-                        let tr = document.createElement("tr");
-                        cols.forEach(col => {
-                            let td = document.createElement("td");
-                            td.innerHTML = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
-                            tr.appendChild(td);
-                        });
-                        table.appendChild(tr);
-                    }
-                });
+    function sortTableByRating(descending) {
+        let table = document.getElementById("parksTable").getElementsByTagName('tbody')[0];
+        let rows = Array.from(table.rows);
 
-                container.innerHTML = "";
-                container.appendChild(table);
-            }
+        rows.sort((a, b) => {
+            let ratingA = parseFloat(a.cells[2].textContent);
+            let ratingB = parseFloat(b.cells[2].textContent);
+            return descending ? ratingB - ratingA : ratingA - ratingB;
+        });
 
-            // Function to filter kid-friendly parks
-            function filterKids() {
-                let container = document.getElementById("parks-list");
-                let table = document.createElement("table");
-                let cols = Object.keys(jsonData[0]).filter(col => col !== "Parking" && col !== "Kids" && col !== "Dogs");
-                let thead = document.createElement("thead");
-                let tr = document.createElement("tr");
-                cols.forEach((item) => {
-                    let th = document.createElement("th");
-                    th.innerHTML = item;
-                    tr.appendChild(th);
-                });
-                thead.appendChild(tr);
-                table.append(thead);
-                jsonData.forEach((item) => {
-                    if (item.Kids) {
-                        let tr = document.createElement("tr");
-                        cols.forEach(col => {
-                            let td = document.createElement("td");
-                            td.innerHTML = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
-                            tr.appendChild(td);
-                        });
-                        table.appendChild(tr);
-                    }
-                });
+        rows.forEach(row => table.appendChild(row));
+    }
 
-                container.innerHTML = "";
-                container.appendChild(table);
-            }
+    function filterParking() {
+        filterTable(3, "Has Parking");
+    }
 
-            function searchParks() {
-                let query = document.getElementById("search").value.toLowerCase();
-                let container = document.getElementById("parks-list");
-                let table = document.createElement("table");
-                let cols = Object.keys(jsonData[0]).filter(col => col !== "Parking" && col !== "Kids" && col !== "Dogs");
+    function filterDogs() {
+        filterTable(3, "Allows Dogs");
+    }
 
-                // Clear any existing "No park found" message
-                container.innerHTML = "";
+    function filterKids() {
+        filterTable(3, "Kid Friendly");
+    }
 
-                // Create table header
-                let thead = document.createElement("thead");
-                let tr = document.createElement("tr");
-                cols.forEach((item) => {
-                    let th = document.createElement("th");
-                    th.innerHTML = item;
-                    tr.appendChild(th);
-                });
-                thead.appendChild(tr);
-                table.append(thead);
+    function filterTable(columnIndex, filterText) {
+        let rows = document.querySelectorAll("#parksTable tbody tr");
+        rows.forEach(row => {
+            let amenities = row.cells[columnIndex].textContent;
+            row.style.display = amenities.includes(filterText) ? "" : "none";
+        });
+    }
 
-                // Filter parks based on query
-                let filteredParks = jsonData.filter(park =>
-                    park.Name.toLowerCase().includes(query) ||
-                    park.Location.toLowerCase().includes(query)
-                );
-
-                // Populate table rows with filtered parks
-                if (filteredParks.length > 0) {
-                    filteredParks.forEach((item) => {
-                        let tr = document.createElement("tr");
-                        cols.forEach(col => {
-                            let td = document.createElement("td");
-                            td.innerHTML = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
-                            tr.appendChild(td);
-                        });
-                        table.appendChild(tr);
-                    });
-                    container.appendChild(table); // Append the table if parks are found
-                } else {
-                    // Display "No park found" message
-                    let noResultMessage = document.createElement("p");
-                    noResultMessage.innerHTML = "No park found.";
-                    container.appendChild(noResultMessage);
-                }
-            }
-
-        </script>
+    function showAllParks() {
+        let rows = document.querySelectorAll("#parksTable tbody tr");
+        rows.forEach(row => {
+            row.style.display = "";
+        });
+    }
+</script>
 
 <!--Footer-->
+<footer class="footer">
+    <h3>About Green Spaces</h3>
+    <p>We're a group of outdoor enthusiasts, environmentalists, and city explorers passionate about green spaces!
+        With backgrounds in ecology, design, and tech, we are committed to helping people find their next favorite park and meet like-minded park enthusiasts.
+        Each review blends expert insights and real experiences to make every visit memorable.</p><br>
+    <em><a th:href="@{/register}">Sign up</a> today to join our community!</em><br>
+    <a href="">Terms of Service</a><br>
+    <a href="">Privacy Policy</a>
+</footer>
 
-    <footer class="footer">
-        <h3>About Green Spaces</h3>
-        <p>We're a group of outdoor enthusiasts, environmentalists,
-            and city explorers passionate about green spaces!
-            With backgrounds in ecology, design, and tech, we are committed
-            to helping people find their next favorite park and meet like-minded park enthusiasts.
-            Each review blends expert insights and real experiences to make every visit memorable.</p><br>
-            <em><a th:href="@{/register}">Sign up </a>today to join our community!</em>
-            <br>
-        <a href="">Terms of Service</a><br>
-        <a href="">Privacy Policy</a>
-    </footer>
-    </body>
+</body>
 </html>
