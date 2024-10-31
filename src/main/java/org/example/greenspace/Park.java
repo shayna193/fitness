@@ -107,5 +107,9 @@ public class Park {
         return images.get(index);
     }
 
+    public String getAmenitiesAsString() {
+        return String.join(", ", amenities);
+    }
+
 
 }

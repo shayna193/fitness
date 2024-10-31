@@ -88,7 +88,10 @@ public class ParkController {
 
     @GetMapping("/explore")
     public ModelAndView explore() {
-        return new ModelAndView("/explore");
+
+        ModelAndView modelAndView = new ModelAndView("/explore");
+        modelAndView.addObject("parks", parkService.getParks());
+        return modelAndView;
     }
 
     @GetMapping("/register")
