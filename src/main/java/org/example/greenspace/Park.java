@@ -84,6 +84,8 @@ public class Park {
         return comments.get(comments.size() - 2);
     }
 
+    public List<Comment> getAllComments() {return comments;}
+
     public void setAmenities(List<String> amenities) {
         this.amenities.addAll(amenities);
 
