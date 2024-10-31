@@ -23,6 +23,10 @@ public class AdminController {
         this.parkService = parkService;
         List<Park> parks = parkService.getParks();
         pendingParks.addAll(parks);
+
+        for (Park park : parkService.getParks())    {
+            comments.addAll(park.getAllComments());
+        }
     }
 
     @PostMapping("/approvePark/{parkName}")
@@ -48,7 +52,9 @@ public class AdminController {
 
     @GetMapping("/adminPage")
     public ModelAndView adminPage() {
-        return new ModelAndView("/adminPage");
+        ModelAndView modelAndView = new ModelAndView("/adminPage");
+        modelAndView.addObject("comments", comments);
+        return modelAndView;
     }
 
     @GetMapping("/addPark")
