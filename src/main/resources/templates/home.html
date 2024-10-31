@@ -41,23 +41,20 @@
         <p th:text="${featuredPark.description}"></p>
         </div>
         <h3>Top Reviews</h3>
-        <p>
-            <strong>Arya Elpula</strong>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span><br>
-            Went here with my boyfriend Tom last week, it was absolutely gorgeous!
-        </p>
-        <p>
-            <strong>Adam Naylor</strong>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span><br>
-            Reminded me of my favourite park in Tavistock, brought back a lot of childhood memories for me. 
-        </p>
+        <div>
+            <p>
+                <strong th:text="${featuredPark.getRecentComment().username}"></strong>
+                <span th:text="' ' + ${featuredPark.getRecentComment().rating} + '⭐'"></span>
+            </p>
+            <p th:text="${featuredPark.getRecentComment().comment}"></p>
+        </div>
+        <div>
+            <p>
+                <strong th:text="${featuredPark.getSecondRecentComment().username}"></strong>
+                <span th:text="' ' + ${featuredPark.getSecondRecentComment().rating} + '⭐'"></span>
+            </p>
+            <p th:text="${featuredPark.getSecondRecentComment().comment}"></p>
+        </div>
     </section>
     
     <h3>Similar to <a src="">Nitesh Park</a></h3>

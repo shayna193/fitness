@@ -20,6 +20,7 @@ public class Park {
     private double rating;
     private List<Integer> ratings = new ArrayList<>();
     private List<String> images = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>();
     private String mapEmbed;
     private String description;
     private boolean allowsDogs;
@@ -42,6 +43,16 @@ public class Park {
         this.images = List.of(images);
 
         setAmenities(List.of(amenities));
+
+        Comment comment1 = new Comment("Zeus", "An alright place to twirl my moustache", 3);
+        Comment comment2 = new Comment("Shayna", "A welcome relief from the mean streets of Bangalore", 5);
+        Comment comment3 = new Comment("Karla", "Not much to steal here, only foliage", 1);
+        Comment comment4 = new Comment("Steve", "Fantastic spot for some summer pics", 5);
+
+        comments.add(comment3);
+        comments.add(comment2);
+        comments.add(comment4);
+        comments.add(comment1);
     }
 
     public void setAverageRating() {
@@ -61,6 +72,18 @@ public class Park {
     public void addRating(int rating) {
         ratings.add(rating);
         setAverageRating();
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+    }
+
+    public Comment getRecentComment() {
+        return comments.get(comments.size() - 1);
+    }
+
+    public Comment getSecondRecentComment() {
+        return comments.get(comments.size() - 2);
     }
 
     public void setAmenities(List<String> amenities) {
