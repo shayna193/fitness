@@ -1,4 +1,17 @@
 /* General Styles */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #3a5f41;
+    color: #f5f5dc;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-family: cursive;
+    font-size: 2em;
+    color: #f5f5dc;
+}
 
 .nav {
     display: flex;

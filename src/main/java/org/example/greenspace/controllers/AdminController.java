@@ -7,9 +7,13 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 import org.example.greenspace.Park;
+import org.example.greenspace.Comment;
+import org.springframework.ui.Model;
 
 @RestController
 public class AdminController {
+
+    private List<Comment> comments = new ArrayList<>();
     private ParkService parkService;
     private final List<Park> approvedParks = new ArrayList<>();
     private final List<Park> pendingParks = new ArrayList<>();
@@ -53,4 +57,17 @@ public class AdminController {
     }
 
     // Admin-specific methods go here
+
+    @PostMapping("/comments")
+    public ModelAndView addComment(@ModelAttribute Comment comment) {
+        comments.add(comment);
+        return new ModelAndView("redirect:/admin/comments");
+    }
+    @GetMapping("/comments")
+    public ModelAndView getAllComments(Model model) {
+        ModelAndView modelAndView = new ModelAndView("adminPage");
+        modelAndView.addObject("comments", comments);
+        return modelAndView;
+    }
+
 }
