@@ -41,3 +41,27 @@ function register(){
     }
     return pass;
 }
+
+function addPark() {
+    var pass=true;
+    var parkName =document.forms["park-form"]["park-name"].value;
+    var location=document.forms["park-form"]["location"].value;
+    var description=document.forms["park-form"]["description"].value;
+
+    if (parkName.length < 5 || parkName.length > 50) {
+        pass=false;
+        alert("Park name must be between 5 and 50 characters");
+    }
+
+    if (location.length < 5 || location.length > 50) {
+        pass=false;
+        alert("Location must be between 5 and 50 characters")
+    }
+
+    if (typeof description !== 'string') {
+        pass=false;
+        alert("Description should be in string format")
+    }
+
+    return pass;
+}

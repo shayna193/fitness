@@ -6,6 +6,7 @@
     <title>Add a Park</title>
 </head>
 <link rel="stylesheet" type="text/css" th:href="@{/styles/addPark.css}">
+<script th:src="@{/JS/validation.js}"></script>
 <header class="header">
     <nav class="nav">
         <img id="logo"
@@ -23,10 +24,10 @@
 
 <div class="form-container">
     <h1>Add a Park</h1>
-    <form action="/Admin/submitPark" method="post">
+    <form action="/Admin/submitPark" method="post" id="park-form" onsubmit="return addPark()">
         <div class="form-group">
-            <label for="name">Park Name:</label>
-            <input type="text" id="name" name="name" required>
+            <label for="park-name">Park Name:</label>
+            <input type="text" id="park-name" name="name" required>
         </div>
 
         <div class="form-group">
@@ -36,7 +37,7 @@
 
         <div class="form-group">
             <label for="description">Amenities:</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
+            <textarea id="description" name="description" cols = "53" rows="5" required></textarea>
         </div>
 
         <button type="submit">Submit Park</button>
