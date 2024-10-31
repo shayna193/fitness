@@ -29,7 +29,7 @@ public class AdminController {
     public ModelAndView approvePark(@PathVariable String parkName) {
         for (Park park : pendingParks) {
             if (park.getName().equals(parkName)) {
-                park.setApproved(true);
+                //park.setApproved(true);
                 approvedParks.add(park);     // Add to approved list
                 pendingParks.remove(park);   // Remove from pending list
                 break;
