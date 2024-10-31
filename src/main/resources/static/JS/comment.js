@@ -1,5 +1,4 @@
 document.getElementById('submitbtn').addEventListener('click', function(event) {
-
     //Grab values from the comment-display section of park.html and execute when a comment is present
     const comment = document.getElementById('new-comment').value;
     const username = document.getElementById('username').value || "Anonymous";
