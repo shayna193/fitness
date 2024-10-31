@@ -1,3 +1,17 @@
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #3a5f41;
+    color: #f5f5dc;
+    margin-bottom: 20px;
+}
+
+.header {
+    font-family: cursive;
+    font-size: 1.5em;
+    color: #f5f5dc;
+}
+
 .nav {
     display: flex;
     align-items: center;
@@ -29,6 +43,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: fit-content;
 }
 
 .nav button:hover {
