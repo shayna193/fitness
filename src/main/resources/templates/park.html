@@ -2,6 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
+    <title>Title</title>
+</head>
+<body>
+
+<header>
+    <img src="" alt="Website Logo">
+    <div class="navbar">
+        <a href="">test</a>
+        <a href="">test</a>
+        <a href="">test</a>
+        <a href="">test</a>
+    </div>
+
+</header>
+
+<main>
+    <article id="left_section">
+        <section class="image-section">
+            <h1 th:text="${park.name}"></h1>
+            <h3 th:text="${park.location}"></h3>
+            <div class="image-container">
+                <img src="">
+                <img src="">
+                <img src="">
+            </div>
+            <p th:text="'Rating: ' + ${park.rating}"></p>
+        </section>
+
+
+        <section class="comment-section">
+            <div class="comments">
+
+            </div>
+            <div class="comment-form">
+                <form>
+                    <input type="text" id="username" name="username">
+                    <label for="username">Username:</label>
+
+                    <input type="text" id="comment" name="comment">
+                    <label for="comment">Comment:</label>
+                </form>
+            </div>
+=======
+=======
+>>>>>>> c30a25961e1787c888d9f4891cfd01e6d6d12ac6
     <title th:text="${park.name}"></title>
     <link th:href="@{/styles/parkStyle.css}" rel="stylesheet" />
 </head>
