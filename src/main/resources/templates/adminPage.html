@@ -54,6 +54,18 @@
         </li>
     </th:block>
 </ul>
+
+<h1>Submitted Comments</h1>
+<ul>
+    <th:block th:each="comment : ${comments}">
+        <li>
+            <p><strong>User:</strong> <span th:text="${comment.username}"></span></p>
+            <p><strong>Rating:</strong> <span th:text="${comment.rating}"></span>⭐</p>
+            <p><strong>Comment:</strong> <span th:text="${comment.comment}"></span></p>
+        </li>
+    </th:block>
+</ul>
+
     <script src="JS/approvepark.js"></script>
 </body>
 </html>

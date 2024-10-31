@@ -1,4 +1,5 @@
-document.getElementById('submitbtn').addEventListener('click', function(event) {
+document.getElementById('submitbtn').addEventListener('click',
+    async function(event) {
     //Grab values from the comment-display section of park.html and execute when a comment is present
     const comment = document.getElementById('new-comment').value;
     const username = document.getElementById('username').value || "Anonymous";
@@ -30,9 +31,26 @@ document.getElementById('submitbtn').addEventListener('click', function(event) {
         if (commentDisplay) {
             commentDisplay.insertBefore(newContainer, commentDisplay.firstChild);
         }
+
+        await submitComment({ username, rating, comment });
+
     }
 
     document.getElementById('username').value = '';
     document.getElementById('rating').value = '1';
     document.getElementById('new-comment').value = '';
 })
+
+async function submitComment() {
+    const username = document.getElementById("username").value;
+    const rating = parseInt(document.getElementById("rating").value);
+    const comment = document.getElementById("new-comment").value;
+
+    const commentData = { username, rating, comment };
+
+    await fetch('/comments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(commentData)
+    });
+}
