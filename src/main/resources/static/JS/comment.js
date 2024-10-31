@@ -4,8 +4,7 @@ document.getElementById('submitbtn').addEventListener('click',
     const comment = document.getElementById('new-comment').value;
     const username = document.getElementById('username').value || "Anonymous";
     const rating = document.getElementById('rating').value;
-    event.preventDefault()
-    console.log("test");
+    //event.preventDefault()
 
     if (comment) {
 
@@ -32,8 +31,6 @@ document.getElementById('submitbtn').addEventListener('click',
             commentDisplay.insertBefore(newContainer, commentDisplay.firstChild);
         }
 
-        await submitComment({ username, rating, comment });
-
     }
 
     document.getElementById('username').value = '';
@@ -41,16 +38,3 @@ document.getElementById('submitbtn').addEventListener('click',
     document.getElementById('new-comment').value = '';
 })
 
-async function submitComment() {
-    const username = document.getElementById("username").value;
-    const rating = parseInt(document.getElementById("rating").value);
-    const comment = document.getElementById("new-comment").value;
-
-    const commentData = { username, rating, comment };
-
-    await fetch('/comments', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(commentData)
-    });
-}

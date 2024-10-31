@@ -120,30 +120,10 @@
 
                 <h2>Reviews</h2>
                 <section class="comment-display">
-                    <div class="comment">
-                        <h4>Zeus Huxtable</h4>
-                        <p>Rating: 3⭐</p>
-                        <p>An alright place to twirl my moustache</p>
-                    </div>
-                    <div class="comment">
-                        <h4>Shayna</h4>
-                        <p>Rating: 5⭐</p>
-                        <p>A welcome relief from the mean streets of Bangalore</p>
-                    </div>
-                    <div class="comment">
-                        <h4>Karla</h4>
-                        <p>Rating: 1⭐</p>
-                        <p>Not much to steal here, only foliage</p>
-                    </div>
-                    <div class="comment">
-                        <h4>IGN</h4>
-                        <p>Rating: 3⭐</p>
-                        <p>Too much water</p>
-                    </div>
-                    <div class="comment">
-                        <h4>Steve Feng</h4>
-                        <p>Rating: 5⭐</p>
-                        <p>Fantastic spot for some summer pics</p>
+                    <div th:each="comment : ${park.comments}">
+                        <h4 th:text="${comment.username}"></h4>
+                        <p th:text="'Rating: ' + ${comment.rating} + '⭐'"></p>
+                        <p th:text="${comment.comment}"></p>
                     </div>
                 </section>
             </div>
@@ -200,6 +180,6 @@
     <a href="">Privacy Policy</a>
 </footer>
 
-    <script th:src="@{/JS/comment.js}"></script>
+
 </body>
 </html>

@@ -1,6 +1,7 @@
 package org.example.greenspace.controllers;
 
 import jakarta.validation.Valid;
+import org.example.greenspace.Comment;
 import org.example.greenspace.Park;
 import org.example.greenspace.services.ParkService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,13 +64,16 @@ public class ParkController {
 
 
     @PostMapping("/submitReview")
-    public ModelAndView submitReview(@RequestParam int rating, @RequestParam String parkName) {
+    public ModelAndView submitReview(@RequestParam String username, @RequestParam String comment, @RequestParam int rating, @RequestParam String parkName) {
 
         List<Park> parks = parkService.getParks();
         Park currentPark = null;
         for (Park park : parks) {
             if (park.getName().equals(parkName)) {
                 park.addRating(rating);
+                Comment comment1 = new Comment(username, comment, rating);
+                System.out.println(comment1);
+                park.addComment(comment1);
                 currentPark = park;
             }
         }

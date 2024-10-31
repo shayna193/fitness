@@ -58,11 +58,6 @@ public class AdminController {
 
     // Admin-specific methods go here
 
-    @PostMapping("/comments")
-    public ModelAndView addComment(@ModelAttribute Comment comment) {
-        comments.add(comment);
-        return new ModelAndView("redirect:/admin/comments");
-    }
     @GetMapping("/comments")
     public ModelAndView getAllComments(Model model) {
         ModelAndView modelAndView = new ModelAndView("adminPage");
