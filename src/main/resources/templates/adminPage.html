@@ -3,45 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Manage Parks</title>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="adminPage.css">
 </head>
-<link rel="stylesheet" th:href="@{/styles/adminPage.css}">
 <body>
+<nav class="nav">
+    <img id="logo"
+         height="50"
+         alt="Logo"
+         src="/static/Images/logo.png"
+         title="Logo">
+    <a th:href="@{/home}">Home</a>&emsp;
+    <a>Log Out</a>&emsp;
+</nav>
+<header>
 
-<h1>Pending Parks for Approval</h1>
-<ul>
-    <!-- Loop through each pending park -->
-    <th:block th:each="park : ${pendingParks}">
-        <li>
-            <p><strong>Name:</strong> <span th:text="${park.name}"></span></p>
-            <p><strong>Location:</strong> <span th:text="${park.location}"></span></p>
-            <a th:href="@{/Admin/approvePark/{parkName}(parkName=${park.name})}" style="text-decoration: none;">
-                <button>Approve</button>
-            </a>
-        </li>
-    </th:block>
-</ul>
+    <h1>Admin Dashboard</h1>
+</header>
 
-<h1>Approved Parks - Edit Details</h1>
-<ul>
-    <!-- Loop through each approved park -->
-    <th:block th:each="park : ${approvedParks}">
-        <li>
-            <form th:action="@{/Admin/editPark/{parkName}(parkName=${park.name})}" method="post">
-                <label for="newName">Name:
-                    <input type="text" id="newName" name="newName" th:value="${park.name}" required />
-                </label>
-                <label for="newLocation">Location:
-                    <input type="text" id="newLocation" name="newLocation" th:value="${park.location}" required />
-                </label>
-                <label for="newRating">Rating:
-                    <input type="number" id="newRating" name="newRating" th:value="${park.rating}" min="1" max="5" required />
-                </label>
-                <button type="submit">Save Changes</button>
-            </form>
-        </li>
-    </th:block>
-</ul>
-    <script src="JS/approvepark.js"></script>
+<div id="admin-content">
+    <section id="approve-section">
+        <h2>Pending Park Approvals</h2>
+        <p>Review and approve new park submissions to be added to the site.</p>
+        <table class="park-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Rating</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Replace this example data with dynamic Thymeleaf data -->
+            <tr>
+                <td>Linkin Park</td>
+                <td>Ends</td>
+                <td>2</td>
+                <td><button class="approve-btn">Approve</button></td>
+            </tr>
+            <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </section>
+
+    <section id="update-section">
+        <h2>Update Park Information</h2>
+        <p>Modify details about approved parks to keep information accurate and up-to-date.</p>
+        <form action="/admin/updatePark" method="post">
+            <label for="park-name">Park Name:</label>
+            <input type="text" id="park-name" name="parkName" required>
+
+            <label for="park-location">Location:</label>
+            <input type="text" id="park-location" name="location" required>
+
+            <label for="park-rating">Rating:</label>
+            <input type="number" id="park-rating" name="rating" min="1" max="5" required>
+
+            <button type="submit" class="update-btn">Update Park</button>
+        </form>
+    </section>
+</div>
+
+<footer class="footer">
+    <h3>About Green Spaces</h3>
+    <p>We're a group of outdoor enthusiasts, environmentalists,
+        and city explorers passionate about green spaces!
+        With backgrounds in ecology, design, and tech, we are committed
+        to helping people find their next favorite park and meet like-minded park enthusiasts.
+        Each review blends expert insights and real experiences to make every visit memorable.</p><br>
+    <em><a th:href="@{/register}">Sign up </a>today to join our community!</em>
+    <br>
+    <a href="">Terms of Service</a><br>
+    <a href="">Privacy Policy</a>
+</footer>
 </body>
 </html>
