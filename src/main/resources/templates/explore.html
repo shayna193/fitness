@@ -46,7 +46,8 @@
                     "Amenities": ["Gym", " Cafe", " Picnic Area"],
                     "Parking": true,
                     "Dogs": true,
-                    "Kids":false
+                    "Kids": false,
+                    "View": "<a href=''>View park</a>"
                 },
                 {
                     "Name": "Ian Park",
@@ -55,7 +56,8 @@
                     "Amenities": ["Garden", " Cafe", " Lake"],
                     "Parking": true,
                     "Dogs": true,
-                    "Kids":false
+                    "Kids":false,
+                    "View": "<a href=''>View park</a>"
                 },
                 {
                     "Name": "Louise Park",
@@ -64,7 +66,8 @@
                     "Amenities": ["Playground", " Garden", " Picnic Area"],
                     "Parking": false,
                     "Dogs": true,
-                    "Kids":true
+                    "Kids":true,
+                    "View": "<a href=''>View park</a>"
                 }
             ];
             //Function to convert JSON data to HTML table
@@ -76,7 +79,7 @@
                 let tr = document.createElement("tr");
                 cols.forEach((item) => {
                     let th = document.createElement("th");
-                    th.innerText = item;
+                    th.innerHTML = item;
                     tr.appendChild(th);
                 });
                 thead.appendChild(tr);
@@ -85,7 +88,7 @@
                     let tr = document.createElement("tr");
                     cols.forEach(col => {
                         let td = document.createElement("td");
-                        td.innerText = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
+                        td.innerHTML = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
                         tr.appendChild(td);
                     });
                     table.appendChild(tr);
@@ -119,7 +122,7 @@
                 let tr = document.createElement("tr");
                 cols.forEach((item) => {
                     let th = document.createElement("th");
-                    th.innerText = item;
+                    th.innerHTML = item;
                     tr.appendChild(th);
                 });
                 thead.appendChild(tr);
@@ -129,7 +132,7 @@
                         let tr = document.createElement("tr");
                         cols.forEach(col => {
                             let td = document.createElement("td");
-                            td.innerText = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
+                            td.innerHTML = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
                             tr.appendChild(td);
                         });
                         table.appendChild(tr);
@@ -149,7 +152,7 @@
                 let tr = document.createElement("tr");
                 cols.forEach((item) => {
                     let th = document.createElement("th");
-                    th.innerText = item;
+                    th.innerHTML = item;
                     tr.appendChild(th);
                 });
                 thead.appendChild(tr);
@@ -159,7 +162,7 @@
                         let tr = document.createElement("tr");
                         cols.forEach(col => {
                             let td = document.createElement("td");
-                            td.innerText = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
+                            td.innerHTML = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
                             tr.appendChild(td);
                         });
                         table.appendChild(tr);
@@ -179,7 +182,7 @@
                 let tr = document.createElement("tr");
                 cols.forEach((item) => {
                     let th = document.createElement("th");
-                    th.innerText = item;
+                    th.innerHTML = item;
                     tr.appendChild(th);
                 });
                 thead.appendChild(tr);
@@ -189,7 +192,7 @@
                         let tr = document.createElement("tr");
                         cols.forEach(col => {
                             let td = document.createElement("td");
-                            td.innerText = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
+                            td.innerHTML = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
                             tr.appendChild(td);
                         });
                         table.appendChild(tr);
@@ -214,7 +217,7 @@
                 let tr = document.createElement("tr");
                 cols.forEach((item) => {
                     let th = document.createElement("th");
-                    th.innerText = item;
+                    th.innerHTML = item;
                     tr.appendChild(th);
                 });
                 thead.appendChild(tr);
@@ -232,7 +235,7 @@
                         let tr = document.createElement("tr");
                         cols.forEach(col => {
                             let td = document.createElement("td");
-                            td.innerText = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
+                            td.innerHTML = Array.isArray(item[col]) ? item[col].join(", ") : item[col];
                             tr.appendChild(td);
                         });
                         table.appendChild(tr);
@@ -241,7 +244,7 @@
                 } else {
                     // Display "No park found" message
                     let noResultMessage = document.createElement("p");
-                    noResultMessage.innerText = "No park found.";
+                    noResultMessage.innerHTML = "No park found.";
                     container.appendChild(noResultMessage);
                 }
             }
