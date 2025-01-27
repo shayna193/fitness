@@ -1,100 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Green Spaces</title>
-        <link rel="stylesheet" th:href="@{/styles/home.css}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Home Page</title>
     </head>
     <body>
+        <main>
+            <p>Hello ()!
+            Ready to train today?</p>
+            <!-- Button that redirects to work out tracking page-->
+        </main>
 
-    <header>
-        <nav class="nav">
-            <img id="logo"
-                height="100"
-                alt="Logo"
-                src="./images/logo.png"
-                title="Logo">
-            <a th:href="@{/register}">Sign Up</a>&emsp;
-            <a th:href="@{/explore}">Explore All Parks</a>&emsp;
-            <a th:href="@{/addPark}">Add a Park</a>&emsp;
-            <button onclick=location.href="/adminPage">Administrator</button>
-        </nav>
-        <h1 class="h1">
-            Green Spaces in Cardiff
-        </h1>
-    </header>
+            <p>View past workouts</p>
+            <p>View progress</p>
+            <p>Edit details</p>
 
-    <!--Main page content-->
-<main>
-    <section id="spotlight">
-        <h1>In the Spotlight - November 2024</h1>
-        <a th:href="@{'/park/' + ${featuredPark.name}}">
-            <h2 th:text="${featuredPark.name}"></h2>
-        </a>
-        <h4 th:text="'📍' + ${featuredPark.location}"></h4><br>
-        <div class="spot">
-        <img
-        height="200"
-        alt="Image of Nitesh Park"
-        th:src="${featuredPark.getRandomImage()}"
-        title="Nitesh Park">
-        <p th:text="${featuredPark.description}"></p>
-        </div>
-        <h3>Top Reviews</h3>
-        <div>
-            <p>
-                <strong th:text="${featuredPark.getRecentComment().username}"></strong>
-                <span th:text="' ' + ${featuredPark.getRecentComment().rating} + '⭐'"></span>
-            </p>
-            <p th:text="${featuredPark.getRecentComment().comment}"></p>
-        </div>
-        <div>
-            <p>
-                <strong th:text="${featuredPark.getSecondRecentComment().username}"></strong>
-                <span th:text="' ' + ${featuredPark.getSecondRecentComment().rating} + '⭐'"></span>
-            </p>
-            <p th:text="${featuredPark.getSecondRecentComment().comment}"></p>
-        </div>
-    </section>
-    
-    <h3>Similar to <a src="">Nitesh Park</a></h3>
-    <div id="related">
-        <a th:href="@{'/park/' + ${similarPark1.name}}">
-            <p>
-                <strong th:text="${similarPark1.name}"></strong><br>
-                <img
-                        height="100"
-                        th:src="${similarPark1.getRandomImage()}"
-                        th:alt="${similarPark1.name} + ' image'"
-                        th:title="${similarPark1.name}">
-            </p>
-        </a>
-        <a th:href="@{'/park/' + ${similarPark2.name}}">
-            <p>
-                <strong th:text="${similarPark2.name}"></strong><br>
-                <img
-                        height="100"
-                        th:src="${similarPark2.getRandomImage()}"
-                        th:alt="${similarPark2.name} + ' image'"
-                        title="Louise Park">
-            </p>
-        </a>
-    </div>
-</main>
+    <p>testing for github</p>
 
-<!--Footer-->
-
-<footer class="footer">
-    <h3>About Green Spaces</h3>
-    <p>We're a group of outdoor enthusiasts, environmentalists, 
-        and city explorers passionate about green spaces! 
-        With backgrounds in ecology, design, and tech, we are committed 
-        to helping people find their next favorite park and meet like-minded park enthusiasts. 
-        Each review blends expert insights and real experiences to make every visit memorable.</p><br>
-        <em><a th:href="@{/register}">Sign up </a>today to join our community!</em>
-        <br>
-    <a href="">Terms of Service</a><br>
-    <a href="">Privacy Policy</a>
-</footer>
     </body>
 </html>
